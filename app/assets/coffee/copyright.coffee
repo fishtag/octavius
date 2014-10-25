@@ -16,6 +16,9 @@ class window.Copyright
     $(@_coinWrapper).on 'mouseleave', (event) =>
       @_hout event
 
+    $(@_coinWrapper).on 'click', (event) =>
+      @onclick() if @onclick != null
+
   _hover: (event) ->
     if @_coinWrapper.hasClass 'animated'
       @_coin.addClass 'hover'
