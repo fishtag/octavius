@@ -2,6 +2,7 @@ class window.Copyright
   constructor: (object) ->
     @directions = ['top', 'right', 'bottom', 'left']
     @timeout = null
+    @onclick = null
 
     @_object = object
     @_coinWrapper = $('.fishtag-copyright-coin-wrapper', @_object)
@@ -10,40 +11,46 @@ class window.Copyright
 
   _events: () ->
     $(@_coinWrapper).on 'mouseenter', (event) =>
-      if @_coinWrapper.hasClass 'animated'
-        @_coin.addClass 'hover'
-        return
-
-      clearTimeout @timeout
-
-      direction = @_getDirection(@_coinWrapper, event)
-      @_coinWrapper.addClass 'hover animated'
-      @_coinWrapper.addClass direction
-
-      @_coin.addClass 'hover'
-
-      @timout = setTimeout () =>
-        @_coinWrapper.removeClass 'hover animated'
-        @_coinWrapper.removeClass 'top left right bottom'
-      , 500
+      @_hover event
 
     $(@_coinWrapper).on 'mouseleave', (event) =>
-      if @_coinWrapper.hasClass 'animated'
-        @_coin.removeClass 'hover'
-        return
+      @_hout event
 
-      clearTimeout @timeout
+  _hover: (event) ->
+    if @_coinWrapper.hasClass 'animated'
+      @_coin.addClass 'hover'
+      return
 
-      direction = @_getDirection(@_coinWrapper, event)
-      @_coinWrapper.addClass 'hout animated'
-      @_coinWrapper.addClass direction
+    clearTimeout @timeout
 
+    direction = @_getDirection(@_coinWrapper, event)
+    @_coinWrapper.addClass 'hover animated'
+    @_coinWrapper.addClass direction
+
+    @_coin.addClass 'hover'
+
+    @timout = setTimeout () =>
+      @_coinWrapper.removeClass 'hover animated'
+      @_coinWrapper.removeClass 'top left right bottom'
+    , 500
+
+  _hout: (event) ->
+    if @_coinWrapper.hasClass 'animated'
       @_coin.removeClass 'hover'
+      return
 
-      @timout = setTimeout () =>
-        @_coinWrapper.removeClass 'hout animated'
-        @_coinWrapper.removeClass 'top left right bottom'
-      , 500
+    clearTimeout @timeout
+
+    direction = @_getDirection(@_coinWrapper, event)
+    @_coinWrapper.addClass 'hout animated'
+    @_coinWrapper.addClass direction
+
+    @_coin.removeClass 'hover'
+
+    @timout = setTimeout () =>
+      @_coinWrapper.removeClass 'hout animated'
+      @_coinWrapper.removeClass 'top left right bottom'
+    , 500
 
 
   _getDirection: ($el, event) ->
