@@ -1,0 +1,81 @@
+@mixin boxShadow($properties) {
+  -webkit-box-shadow: $properties;
+  -moz-box-shadow: $properties;
+  box-shadow: $properties;
+}
+
+@mixin borderRadius($properties) {
+  -webkit-border-radius: $properties;
+  -moz-border-radius: $properties;
+  border-radius: $properties;
+}
+
+@mixin unselect() {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@mixin perspective($value) {
+  -webkit-perspective: $value;
+  -moz-perspective: $value;
+  -o-perspective: $value;
+  -ms-perspective: $value;
+  perspective: $value;
+}
+
+@mixin origin($x, $y) {
+  -webkit-transform-origin: $x $y;
+  -moz-transform-origin: $x $y;
+  -o-transform-origin: $x $y;
+  -ms-transform-origin: $x $y;
+  transform-origin: $x $y;
+}
+
+@mixin transform-style($style) {
+  -webkit-transform-style: $style;
+  -moz-transform-style: $style;
+  -o-transform-style: $style;
+  transform-style: $style;
+}
+
+@mixin transition($transition) {
+  -webkit-transition: $transition;
+  -moz-transition: $transition;
+  -o-transition: $transition;
+  transition: $transition;
+}
+
+@mixin transform($transform) {
+  -webkit-transform: $transform;
+  -moz-transform: $transform;
+  -o-transform: $transform;
+  -ms-transform: $transform;
+  transform: $transform;
+}
+
+@mixin animation($animation) {
+  -webkit-animation: $animation;
+  -moz-animation: $animation;
+  -o-animation: $animation;
+  -ms-animation: $animation;
+  animation: $animation;
+}
+
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes $animation-name {
+    @content;
+  }
+  @-moz-keyframes $animation-name {
+    @content;
+  }
+  @-ms-keyframes $animation-name {
+    @content;
+  }
+  @keyframes $animation-name {
+    @content;
+  }
+}
