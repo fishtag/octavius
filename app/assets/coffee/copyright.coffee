@@ -1,6 +1,7 @@
 class window.Copyright
   constructor: (object) ->
     @directions = ['top', 'right', 'bottom', 'left']
+    @timeout = null
 
     @_object = object
     @_coinWrapper = $('.fishtag-copyright-coin-wrapper', @_object)
@@ -10,18 +11,20 @@ class window.Copyright
   _events: () ->
     $(@_coinWrapper).on 'mouseenter', (event) =>
       if @_coinWrapper.hasClass 'animated'
+        @_coin.addClass 'hover'
         return
+
+      clearTimeout @timeout
+
       direction = @_getDirection(@_coinWrapper, event)
       @_coinWrapper.addClass 'hover animated'
-      @_coinWrapper.addClass "hover-#{direction}"
+      @_coinWrapper.addClass direction
 
-      setTimeout () =>
-        @_coin.addClass 'hover'
-      , 50
+      @_coin.addClass 'hover'
 
-      setTimeout () =>
+      @timout = setTimeout () =>
         @_coinWrapper.removeClass 'hover animated'
-        @_coinWrapper.removeClass 'hover-top hover-left hover-right hover-bottom'
+        @_coinWrapper.removeClass 'top left right bottom'
       , 500
 
     $(@_coinWrapper).on 'mouseleave', (event) =>
@@ -29,7 +32,18 @@ class window.Copyright
         @_coin.removeClass 'hover'
         return
 
-      @_coinWrapper.addClass 'animated'
+      clearTimeout @timeout
+
+      direction = @_getDirection(@_coinWrapper, event)
+      @_coinWrapper.addClass 'hout animated'
+      @_coinWrapper.addClass direction
+
+      @_coin.removeClass 'hover'
+
+      @timout = setTimeout () =>
+        @_coinWrapper.removeClass 'hout animated'
+        @_coinWrapper.removeClass 'top left right bottom'
+      , 500
 
 
   _getDirection: ($el, event) ->

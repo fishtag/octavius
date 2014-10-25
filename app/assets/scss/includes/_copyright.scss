@@ -6,6 +6,7 @@
     @include perspective(100px);
     position: relative;
     display: inline-block;
+    cursor: pointer;
 
     .fishtag-copyright-coin {
       width: $coin-size;
@@ -17,43 +18,96 @@
       margin-left: -$coin-size / 2;
       margin-top: -$coin-size / 2;
 
-      @include borderRadius($coin-size);
-
-      background: {
-        color: #000000;
-        repeat: no-repeat;
-        position: 50% 50%;
-        image: url(../images/logo.png);
-      }
-
       @include origin(32px, 32px);
       @include transform-style(preserve-3d);
 
-      &.hover {
+      &:before, &:after {
+        content: " ";
+        font-size: 0;
+        display: block;
+
+        width: $coin-size;
+        height: $coin-size;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+
+        margin-left: -$coin-size / 2;
+        margin-top: -$coin-size / 2;
+
         background: {
-          color: transparent;
-          image: url(../images/logo-hover.png);
+          repeat: no-repeat;
+          position: 50% 50%;
+        }
+
+        @include transition(all linear 0.2s);
+        @include borderRadius($coin-size);
+
+      }
+
+      &:before {
+        background-image: url(../images/logo.png);
+        z-index: 5;
+      }
+
+      &:after {
+        opacity: 0;
+        background-image: url(../images/logo-hover.png);
+        z-index: 10;
+      }
+
+      &.hover {
+        &:before {
+          opacity: 0;
+        }
+
+        &:after {
+          opacity: 1;
         }
       }
     }
 
     &.hover {
-      &.hover-top {
+      &.top {
         .fishtag-copyright-coin {
           @include animation(animationFramesTop linear 0.5s);
         }
       }
-      &.hover-right {
+      &.right {
         .fishtag-copyright-coin {
           @include animation(animationFramesRight linear 0.5s);
         }
       }
-      &.hover-bottom {
+      &.bottom {
         .fishtag-copyright-coin {
           @include animation(animationFramesBottom linear 0.5s);
         }
       }
-      &.hover-left {
+      &.left {
+        .fishtag-copyright-coin {
+          @include animation(animationFramesLeft linear 0.5s);
+        }
+      }
+    }
+
+    &.hout {
+
+      &.bottom {
+        .fishtag-copyright-coin {
+          @include animation(animationFramesTop linear 0.5s);
+        }
+      }
+      &.left {
+        .fishtag-copyright-coin {
+          @include animation(animationFramesRight linear 0.5s);
+        }
+      }
+      &.top {
+        .fishtag-copyright-coin {
+          @include animation(animationFramesBottom linear 0.5s);
+        }
+      }
+      &.right {
         .fishtag-copyright-coin {
           @include animation(animationFramesLeft linear 0.5s);
         }
