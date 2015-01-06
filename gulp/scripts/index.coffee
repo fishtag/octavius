@@ -1,0 +1,1 @@
+exports.bower = require './bower'
