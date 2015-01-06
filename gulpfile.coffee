@@ -12,10 +12,10 @@ global.plugins    = require('gulp-load-plugins')({
   replaceString: /\bgulp[\-.]/
 })
 
-requireTree ['./gulp/tasks', './gulp/scripts']
+requireTree ['./gulp/scripts', './gulp/tasks']
 
 gulp.task 'init', () ->
   gulp.start 'bower-packages'
 
 # Start default Gulp Task
-gulp.task 'default', ['init', 'styles']
+gulp.task 'default', ['init', 'htmlInclude']
