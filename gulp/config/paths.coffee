@@ -48,4 +48,8 @@ paths =
   sprite:
     src: base.app + "images/icons/*"
 
+# Not bower vendor files
+  vendor:
+    js: base.app + "vendor/js/*"
+
 module.exports = paths

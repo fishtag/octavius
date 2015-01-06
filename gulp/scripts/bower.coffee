@@ -1,13 +1,9 @@
 # Require the packages
-gulp = require 'gulp'
 bower = require 'bower'
-concat = require 'gulp-concat'
-_ = require 'underscore'
 _Str = require 'underscore.string'
 
 # Declare the paths and excluded libraries
 app = '../..'
-paths = require "#{app}/gulp/config/paths"
 exclude = require("#{app}/gulp/config/exclude").files
 
 # Task to install all packages from bower json
@@ -59,4 +55,4 @@ gulp.task 'bower-packages', ['bower'], () ->
       mainFiles.push mainFile
 
   destination = "#{app}/#{paths.scripts.dest}"
-  return gulp.src(mainFiles).pipe(concat('libraries.js')).pipe(gulp.dest('./public/js'))
+  return gulp.src(mainFiles).pipe(plugins.concat('libraries.js')).pipe(gulp.dest('./public/js'))
