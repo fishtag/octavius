@@ -2,29 +2,32 @@ base =
   app: './app/'
   public: './public/'
   dest: './public/'
+  assets: './public/assets/'
   bower: './bower_components/'
 
 paths =
   bower: 'bower_components'
+  assets: base.assets
+
 # Images task
   images:
     src: base.app + "images/**/*.*"
-    dest: base.dest + "images/"
+    dest: base.assets + "images/"
 
 # Fonts task
   fonts:
     src: base.app + "fonts/**/*.*"
-    dest: base.dest + "fonts/"
+    dest: base.assets + "fonts/"
 
 # Sounds task
   sounds:
     src: base.app + "sounds/**/*.*"
-    dest: base.dest + "sounds/"
+    dest: base.assets + "sounds/"
 
 # Coffee folder
   coffee:
     src: base.app + "coffee/"
-    dest: base.dest + "js/"
+    dest: base.assets + "js/"
 
 # Slim task
   slim:
@@ -36,13 +39,12 @@ paths =
 # Javascript merge task
   scripts:
     src: base.app + "js/"
-    dest: base.dest + "js"
-    libs: base.dest + "js/libs/"
+    dest: base.assets + "js"
 
 # Scss task
   styles:
     src: base.app + "scss/"
-    dest: base.dest + "css/"
+    dest: base.assets + "css/"
 
 # Sprite generation task
   sprite:

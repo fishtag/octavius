@@ -55,4 +55,6 @@ gulp.task 'bower-packages', ['bower'], () ->
       mainFiles.push mainFile
 
   destination = "#{app}/#{paths.scripts.dest}"
-  return gulp.src(mainFiles).pipe(plugins.concat('libraries.js')).pipe(gulp.dest('./public/js'))
+  gulp.src mainFiles
+    .pipe plugins.concat 'libraries.js'
+    .pipe gulp.dest "#{paths.assets}/js"

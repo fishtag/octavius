@@ -2,4 +2,4 @@
 gulp.task 'vendor', () ->
   gulp.src paths.vendor.js
   .pipe plugins.concat('vendor.js')
-  .pipe gulp.dest('./public/js')
+  .pipe gulp.dest "#{paths.assets}/js"

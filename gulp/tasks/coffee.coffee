@@ -4,4 +4,4 @@ gulp.task 'scripts', () ->
     .pipe sourcemaps.init()
     .pipe plugins.coffee()
     .pipe sourcemaps.write()
-    .pipe gulp.dest paths.scripts.dest
+    .pipe gulp.dest "#{paths.assets}/js"
