@@ -5,7 +5,7 @@ base =
   bower: './bower_components/'
 
 paths =
-
+  bower: 'bower_components'
 # Images task
   images:
     src: base.app + "images/**/*.*"
@@ -36,7 +36,7 @@ paths =
 # Javascript merge task
   scripts:
     src: base.app + "js/"
-    dest: base.dest + "js/"
+    dest: base.dest + "js"
     libs: base.dest + "js/libs/"
 
 # Scss task

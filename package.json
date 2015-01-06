@@ -37,6 +37,8 @@
     "isarray": "0.0.1",
     "pngcrush": "0.0.5",
     "tiny-lr": "0.0.9",
+    "underscore": "^1.7.0",
+    "underscore.string": "^2.4.0",
     "win-spawn": "^2.0.0"
   }
 }

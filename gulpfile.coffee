@@ -2,7 +2,8 @@ gulp = require 'gulp'
 scripts = require './gulp/scripts'
 paths = require './gulp/config/paths'
 
-console.log scripts
+gulp.task 'init', () ->
+  gulp.start 'bower-packages'
 
 # Start default Gulp Task
-gulp.task 'default', ['watch']
+gulp.task 'default', ['init']
