@@ -22,6 +22,7 @@
     "gulp-haml": "^0.0.8",
     "gulp-imagemin": "^0.6.1",
     "gulp-include": "^0.2.3",
+    "gulp-jsbeautifier": "0.0.4",
     "gulp-jsmin": "^0.1.4",
     "gulp-livereload": "^2.1.0",
     "gulp-load-plugins": "^0.4.0",

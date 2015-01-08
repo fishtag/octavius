@@ -2,5 +2,19 @@
   "livereload": {
     "express_port": 4000,
     "livereload_port": 35729
+  },
+  "html": {
+    "slim": {
+      "pretty": false
+    },
+    "include": {
+      "prefix": "##",
+      "basepath": "@file"
+    },
+    "beautifier": {
+      "indentSize": 2,
+      "wrapLineLength": 80,
+      "preserveNewlines": true
+    }
   }
 }
