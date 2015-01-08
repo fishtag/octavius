@@ -2,3 +2,6 @@
 gulp.task "sounds", ->
   gulp.src paths.sounds.src
     .pipe gulp.dest paths.sounds.dest
+
+# Start task on gulp start
+gulp.start "sounds"

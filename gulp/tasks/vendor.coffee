@@ -3,3 +3,6 @@ gulp.task 'vendor', () ->
   gulp.src paths.vendor.js
   .pipe plugins.concat('vendor.js')
   .pipe gulp.dest "#{paths.assets}/js"
+
+# Start task on gulp start
+gulp.start "vendor"

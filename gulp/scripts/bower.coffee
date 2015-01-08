@@ -7,11 +7,16 @@ app = '../..'
 exclude = require("#{app}/gulp/config/exclude").files
 
 # Task to install all packages from bower json
-gulp.task "bower", (cb) ->
+gulp.task "bower", (callback) ->
   bower.commands.install([],
     save: true
   , {}).on "end", (installed) ->
-    cb() # notify gulp that this task is finished
+    unless _.isEmpty installed
+      components = _.keys(installed)
+      console.log "#{components.length} new components was installed:".green
+      console.log "\t#{components.join(', ')}"
+
+    callback() # notify gulp that this task is finished
     return
 
   return
@@ -58,3 +63,6 @@ gulp.task 'bower-packages', ['bower'], () ->
   gulp.src mainFiles
     .pipe plugins.concat 'libraries.js'
     .pipe gulp.dest "#{paths.assets}/js"
+
+plugins.watch "bower.json", () ->
+  gulp.start 'bower-packages'

@@ -15,3 +15,6 @@ gulp.task "sprite", ->
     }
   spriteData.img.pipe gulp.dest paths.images.dest
   spriteData.css.pipe gulp.dest paths.styles.src
+
+# Start task on gulp start
+gulp.start "sprite"

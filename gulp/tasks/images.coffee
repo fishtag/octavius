@@ -6,3 +6,6 @@ gulp.task 'images', () ->
       svgoPlugins: [{removeViewBox: false}]
     }
   .pipe gulp.dest paths.images.dest
+
+# Start task on gulp start
+gulp.start "images"

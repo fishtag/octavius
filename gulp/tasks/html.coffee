@@ -13,6 +13,9 @@ gulp.task "htmlInclude", ["slimRender"], () ->
   .pipe plugins.jsbeautifier config.html.beautifier
   .pipe gulp.dest paths.slim.dest
 
+# Start task on gulp start
+sequence 'slimRender', 'htmlInclude'
+
 # Start watch process
 plugins.watch paths.slim.short + '**/*.slim', () ->
   sequence 'slimRender', 'htmlInclude', 'livereload'
