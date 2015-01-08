@@ -14,5 +14,7 @@ gulp.task "styles", ->
       )
   es.concat sassFiles
   .pipe plugins.concat("style.min.css")
-  .pipe plugins.size()
   .pipe gulp.dest paths.styles.dest
+
+plugins.watch 'app/scss/**/*.scss', () ->
+  sequence 'styles', 'livereload'

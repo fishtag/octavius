@@ -247,8 +247,7 @@ gulp.task('sprite', function () {
 
 // Main watch task
 gulp.task('watch', ['images', 'fonts', 'sounds', 'sprite', 'css', 'scripts', 'htmlInclude'], function(){
-    startExpress();
-    startLivereload();
+
 
     gulp.watch(appFiles.styles, ['css']).on('change', function(evt) {
         changeEvent(evt);

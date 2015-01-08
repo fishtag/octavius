@@ -1,11 +1,14 @@
 base =
   app: './app/'
+  app_short: 'app/'
   public: './public/'
   dest: './public/'
   assets: './public/assets/'
   bower: './bower_components/'
 
 paths =
+  app: base.app
+  app_short: base.app_short
   bower: 'bower_components'
   assets: base.assets
 
@@ -32,6 +35,7 @@ paths =
 # Slim task
   slim:
     src: base.app + "slim/"
+    short: base.app_short + "slim/"
     tmp: base.app + "html/"
     dest: base.public
 
@@ -45,6 +49,7 @@ paths =
   styles:
     src: base.app + "scss/"
     dest: base.assets + "css/"
+    files: base.app + "scss/**/*.scss"
 
 # Sprite generation task
   sprite:

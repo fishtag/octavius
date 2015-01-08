@@ -14,3 +14,7 @@ gulp.task "htmlInclude", ["slimRender"], () ->
     basepath: "@file"
   }
   .pipe gulp.dest paths.slim.dest
+
+# Start watch process
+plugins.watch paths.slim.short + '**/*.slim', () ->
+  sequence 'slimRender', 'htmlInclude', 'livereload'
