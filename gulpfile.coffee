@@ -19,4 +19,4 @@ gulp.task 'init', () ->
   sequence 'bower', 'bower-packages'
 
 # Start default Gulp Task
-gulp.task 'start', ['init']
+gulp.task 'default', ['init']
