@@ -12,17 +12,17 @@ This is a simple web project that use Gulp for precompile all assets:
 
 ## Main features
 
-- Easy installation and ready to work after 3 commands
-- CoffeeScript based Gulpfile 
-- Useful Gulpfiles structure with tasks, utils etc
-- Full bower support (Automatic concat and optimize bower components from bower.js)
-- LiveReload support (Chrome extension needed)
+- **Easy installation** and ready to work after 3 commands
+- **CoffeeScript based** Gulpfile 
+- **Useful Gulpfiles structure** with tasks, utils etc
+- Full **bower support** (Automatic concat and optimize bower components from bower.js)
+- **LiveReload** support (Chrome extension needed)
  
 ## Requirements
 - *nix like OS (Mac OS is recommended)
-- Homebrew (Mac OS) or any OS package manager
-- node.js
-- npm
+- **Homebrew** (Mac OS) or your operating system **package manager**
+- **node.js** as main engine
+- **npm** as node.js package manager
 
 ----
 
@@ -39,15 +39,13 @@ This is a simple web project that use Gulp for precompile all assets:
 ### Install required NPM packages
 `npm install --save-dev`
 
-**Thats all! You're ready to Gulpify your new project!**
+### Install required Ruby gems
+`gem install slim compass`
 
 ## Start gulp
 *Note: Use Webstorm 9 Gulp support or start process from your Terminal with this command:*
 
 `gulp`
-
-----
-
 
 # Upcoming features
 
