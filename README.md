@@ -37,7 +37,7 @@ This is a simple web project that use Gulp for precompile all assets:
 `git clone https://github.com/fishtag/gulpify.git`
 
 ### Install required NPM packages
-`npm install --save-dev`
+`npm install`
 
 ### Install required Ruby gems
 `gem install slim compass`
