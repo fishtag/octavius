@@ -2,6 +2,7 @@ require './gulp/utils'
 
 global.config     = require './gulp/config.json'
 global.gulp       = require 'gulp'
+global.es         = require 'event-stream'
 global.sourcemaps = require 'gulp-sourcemaps'
 global.sequence   = require 'run-sequence'
 global._          = require 'underscore'
