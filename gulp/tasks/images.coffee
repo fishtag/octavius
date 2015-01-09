@@ -9,3 +9,6 @@ gulp.task 'images', () ->
 
 # Start task on gulp start
 gulp.start "images"
+
+plugins.watch paths.app_short+'images/**/*.*', () ->
+  sequence 'images', 'livereload'
