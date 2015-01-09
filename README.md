@@ -46,6 +46,14 @@ This is a simple web project that use Gulp for precompile all assets:
 *Note: Use Webstorm 9 Gulp support or start process from your Terminal with this command:*
 
 `gulp`
+# Additional information
+## Bower components installation
+All bower components automatically concatenates into one file libraries.js. Gulp get main file of each component by its 'main' attribute in bower.json. So if you want automatically attach new component to your project you shoud do it with this command:
+
+`bower install backbone --save`
+
+*Important! Gulp does not find your component without node in bower.json. Flag **--save** means that the information about the component will be included in the main bower.json file.*
+
 
 # Upcoming features
 
