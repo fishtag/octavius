@@ -17,7 +17,7 @@ global.plugins    = require('gulp-load-plugins')({
 requireTree ['./gulp/scripts', './gulp/tasks']
 
 gulp.task 'init', () ->
-  gulp.start 'bower-packages'
+  sequence 'bower', 'bower-packages'
 
 # Start default Gulp Task
 gulp.task 'start', ['init']

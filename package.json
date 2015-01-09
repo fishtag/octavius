@@ -6,6 +6,7 @@
     "colors": "^1.0.3",
     "connect-livereload": "^0.4.0",
     "core-util-is": "^1.0.1",
+    "del": "^1.1.1",
     "exec-sync": "^0.1.6",
     "express": "^4.6.1",
     "fs": "0.0.2",
@@ -27,6 +28,7 @@
     "gulp-notify": "^1.5.0",
     "gulp-order": "^1.1.1",
     "gulp-rename": "^1.2.0",
+    "gulp-rimraf": "^0.1.1",
     "gulp-sass": "^0.7.2",
     "gulp-size": "^0.3.1",
     "gulp-slim": "0.0.8",
@@ -42,6 +44,7 @@
     "tiny-lr": "0.0.9",
     "underscore": "^1.7.0",
     "underscore.string": "^2.4.0",
+    "vinyl-paths": "^1.0.0",
     "win-spawn": "^2.0.0"
   }
 }

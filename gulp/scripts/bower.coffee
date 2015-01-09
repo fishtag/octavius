@@ -1,5 +1,7 @@
 # Require the packages
 bower = require 'bower'
+del = require 'del'
+vinylPaths = require 'vinyl-paths'
 _Str = require 'underscore.string'
 
 # Declare the paths and excluded libraries
@@ -22,7 +24,7 @@ gulp.task "bower", (callback) ->
   return
 
 # Task to concat all main files of bower packages to one libraries.js
-gulp.task 'bower-packages', ['bower'], () ->
+gulp.task 'bower-packages', () ->
   bowerFile = require "#{app}/bower.json"
   bowerPackages = bowerFile.dependencies
   bowerDir = "#{app}/bower_components"
@@ -60,9 +62,12 @@ gulp.task 'bower-packages', ['bower'], () ->
       mainFiles.push mainFile
 
   destination = "#{app}/#{paths.scripts.dest}"
+  gulp.src "./public/assets/js/libraries.js"
+    .pipe vinylPaths del
+
   gulp.src mainFiles
     .pipe plugins.concat 'libraries.js'
-    .pipe gulp.dest "#{paths.assets}/js"
+    .pipe gulp.dest "#{paths.assets}js"
 
 plugins.watch "bower.json", () ->
-  gulp.start 'bower-packages'
+  sequence 'bower-packages', 'livereload'
