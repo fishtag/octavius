@@ -15,8 +15,7 @@ gulp.task "bower", (callback) ->
   , {}).on "end", (installed) ->
     unless _.isEmpty installed
       components = _.keys(installed)
-      console.log "#{components.length} new components was installed:".green
-      console.log "\t#{components.join(', ')}"
+      console.log "#{components.length} new components was installed:".green, "#{components.join(', ')}"
 
     callback() # notify gulp that this task is finished
     return

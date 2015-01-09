@@ -22,6 +22,11 @@ paths =
     src: base.app + "fonts/**/*.*"
     dest: base.assets + "fonts/"
 
+# Icon fonts task
+  iconsfonts:
+    src: base.app + "svg/**/*.*"
+    dest: base.assets + "fonts/iconsfont"
+
 # Sounds task
   sounds:
     src: base.app + "sounds/**/*.*"
