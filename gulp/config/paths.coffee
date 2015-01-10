@@ -3,6 +3,7 @@ base =
   app_short: 'app/'
   public: './public/'
   dest: './public/'
+  tmp: './tmp/'
   assets: './public/assets/'
   bower: './bower_components/'
 
@@ -53,7 +54,9 @@ paths =
 # Scss task
   styles:
     src: base.app + "scss/"
+    src_css: base.app + "css/"
     dest: base.assets + "css/"
+    tmp: base.tmp + "css/"
     files: base.app + "scss/**/*.scss"
 
 # Sprite generation task

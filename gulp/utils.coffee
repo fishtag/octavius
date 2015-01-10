@@ -1,3 +1,8 @@
+# Error handler
+global.handleError = (error) ->
+  console.log error.toString()
+  @emit 'end'
+
 # Functions that allow to require all files from target folder
 global.requireFolder = (folder) ->
   prefix = '../'
