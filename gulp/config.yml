@@ -13,3 +13,11 @@ default:
       wrapLineLength: 80
       preserveNewlines: true
   block:
+    styles:
+      include: ./app/scss/application.scss
+      target: ./app/scss/includes
+      template: ./gulp/templates/_block.scss
+    slim:
+      include: ./app/slim/index.slim
+      target: ./app/slim/include
+      template: ./gulp/templates/block.slim

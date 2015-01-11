@@ -29,6 +29,7 @@
     "gulp-jsmin": "^0.1.4",
     "gulp-livereload": "^2.1.0",
     "gulp-load-plugins": "^0.4.0",
+    "gulp-lodash-template": "0.0.4",
     "gulp-notify": "^1.5.0",
     "gulp-order": "^1.1.1",
     "gulp-rename": "^1.2.0",
@@ -43,6 +44,8 @@
     "inherits": "^2.0.1",
     "isarray": "0.0.1",
     "lodash": "^2.4.1",
+    "node-yaml-config": "0.0.2",
+    "optimist": "^0.6.1",
     "pngcrush": "0.0.5",
     "run-sequence": "^1.0.2",
     "tiny-lr": "0.0.9",
@@ -50,8 +53,5 @@
     "underscore.string": "^2.4.0",
     "vinyl-paths": "^1.0.0",
     "win-spawn": "^2.0.0"
-  },
-  "dependencies": {
-    "node-yaml-config": "0.0.2"
   }
 }
