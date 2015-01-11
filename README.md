@@ -17,6 +17,8 @@ This is a simple web project that use Gulp for precompile all assets:
 - **Useful Gulpfiles structure** with tasks, utils etc
 - Full **bower support** (Automatic concat and optimize bower components from bower.js)
 - **LiveReload** support (Chrome extension needed)
+- **Service tasks:**
+  - **block** - creates block in slim and scss folders and append includes in index files
  
 ## Requirements
 - *nix like OS (Mac OS is recommended)
@@ -46,6 +48,8 @@ This is a simple web project that use Gulp for precompile all assets:
 *Note: Use Webstorm 9 Gulp support or start process from your Terminal with this command:*
 
 `gulp`
+
+----
 # Additional information
 ## Bower components installation
 All bower components automatically concatenates into one file libraries.js. Gulp get main file of each component by its 'main' attribute in bower.json. So if you want automatically attach new component to your project you shoud do it with this command:
@@ -54,6 +58,15 @@ All bower components automatically concatenates into one file libraries.js. Gulp
 
 *Important! Gulp does not find your component without node in bower.json. Flag **--save** means that the information about the component will be included in the main bower.json file.*
 
+----
+
+# Service tasks
+## block
+This task creates block in your app/slim and scss/includes folders and append include directives to index.slim and applications.scss files. To create new block run this command in your terminal:
+
+`gulp block --name=%your-block-name%`
+
+----
 
 # Upcoming features
 

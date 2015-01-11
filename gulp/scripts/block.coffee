@@ -6,7 +6,6 @@ config = global.config.block
 createBlock = (blockName) ->
   sequence 'block-slim', 'block-style', () ->
     console.log 'Block is successful created!'.green
-    process.exit code=0
 
 gulp.task 'block-slim', () ->
   gulp.src config.slim.template
