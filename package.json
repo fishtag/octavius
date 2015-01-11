@@ -50,5 +50,8 @@
     "underscore.string": "^2.4.0",
     "vinyl-paths": "^1.0.0",
     "win-spawn": "^2.0.0"
+  },
+  "dependencies": {
+    "node-yaml-config": "0.0.2"
   }
 }

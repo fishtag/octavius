@@ -16,5 +16,8 @@
       "wrapLineLength": 80,
       "preserveNewlines": true
     }
+  },
+  "block": {
+
   }
 }

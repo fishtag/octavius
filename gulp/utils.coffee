@@ -1,3 +1,5 @@
+fs = require 'fs'
+
 # Error handler
 global.handleError = (error) ->
   console.log error.toString()

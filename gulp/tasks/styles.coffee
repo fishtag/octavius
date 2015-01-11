@@ -1,24 +1,20 @@
 checkGem 'compass'
 
 gulp.task 'styles', ->
-  sequence 'sass', 'css-import', 'style-concat', 'livereload'
+  sequence 'sass', 'css-import', 'livereload'
 
 gulp.task "sass", ->
   sassFiles = gulp.src paths.styles.src + "application.scss"
   .pipe(plugins.compass({
-      css: paths.styles.tmp
+      css: paths.styles.dest
       sass: paths.styles.src
+      sourcemap: true
     })).on("error", handleError)
-  .pipe gulp.dest paths.styles.tmp
+  .pipe gulp.dest paths.styles.dest
 
 gulp.task "css-import", ->
   gulp.src paths.styles.src_css + "vendor.css"
   .pipe plugins.cssimport { extensions: ["css"] }
-  .pipe gulp.dest paths.styles.tmp
-
-gulp.task "style-concat", ->
-  gulp.src [paths.styles.tmp + "/vendor.css", paths.styles.tmp + "/application.css"]
-  .pipe plugins.concat('application.css')
   .pipe gulp.dest paths.styles.dest
 
 # Start task on gulp start

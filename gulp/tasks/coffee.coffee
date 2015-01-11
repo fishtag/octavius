@@ -1,3 +1,5 @@
+global.sourcemaps = require 'gulp-sourcemaps'
+
 # Compile all coffee script files and place it into public/js folder
 gulp.task 'coffee', () ->
   gulp.src paths.coffee.src + '**/*.coffee'
