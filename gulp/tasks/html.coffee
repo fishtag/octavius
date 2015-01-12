@@ -10,6 +10,7 @@ gulp.task "slimRender", () ->
 gulp.task "htmlInclude", ["slimRender"], () ->
   gulp.src paths.slim.tmp + "*.html"
   .pipe plugins.fileInclude config.html.include
+    .on("error", handleError)
   .pipe plugins.jsbeautifier config.html.beautifier
   .pipe gulp.dest paths.slim.dest
 

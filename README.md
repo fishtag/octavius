@@ -71,5 +71,6 @@ This task creates block in your app/slim and scss/includes folders and append in
 # Upcoming features
 
 - Favicon generation for all devices
+- Check npm packages installation status
 - Production mode with uglify support
 - Browser error reports via LiveReload functionality
