@@ -1,14 +1,14 @@
 checkGem 'compass'
 
 gulp.task 'styles', ->
-  sequence 'styles', 'css-import', 'livereload'
+  sequence 'sass', 'css-import', 'livereload'
 
 gulp.task "sass", ->
   sassFiles = gulp.src paths.styles.src + "application.scss"
   .pipe(plugins.compass({
+      sourcemap: true
       css: paths.styles.dest
       sass: paths.styles.src
-      sourcemap: true
     })).on("error", handleError)
   .pipe gulp.dest paths.styles.dest
 
