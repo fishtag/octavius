@@ -5,6 +5,7 @@ gulp.task 'coffee', () ->
   gulp.src paths.coffee.src + '**/*.coffee'
     .pipe sourcemaps.init()
     .pipe plugins.coffee()
+      .on("error", handleError)
     .pipe sourcemaps.write()
     .pipe gulp.dest "#{paths.assets}/js"
 

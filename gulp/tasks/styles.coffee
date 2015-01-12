@@ -9,7 +9,8 @@ gulp.task "sass", ->
       sourcemap: true
       css: paths.styles.dest
       sass: paths.styles.src
-    })).on("error", handleError)
+    }))
+  .on "error", handleError
   .pipe gulp.dest paths.styles.dest
 
 gulp.task "css-import", ->
