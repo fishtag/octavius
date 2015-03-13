@@ -1,7 +1,7 @@
 checkGem 'compass'
 
 gulp.task 'styles', ->
-  sequence 'sass', 'css-import', 'livereload'
+  sequence 'sass', 'css-import'
 
 gulp.task "sass", ->
   sassFiles = gulp.src paths.styles.src + "application.scss"
@@ -12,6 +12,8 @@ gulp.task "sass", ->
     }))
   .on "error", handleError
   .pipe gulp.dest paths.styles.dest
+  .pipe plugins.filter '**/*.css'
+  .pipe browserSync.reload stream:true
 
 gulp.task "css-import", ->
   gulp.src paths.styles.src_css + "vendor.css"
