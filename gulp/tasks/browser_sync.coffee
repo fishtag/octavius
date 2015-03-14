@@ -1,7 +1,8 @@
 global.browserSync = require 'browser-sync'
+console.log __dirname
 browserSync
   xip: true
-  reloadOnRestart: false
+  open: "external"
   browser: "google chrome"
   server:
     baseDir: './public'
