@@ -16,7 +16,7 @@ This is a simple web project that use Gulp for precompile all assets:
 - **CoffeeScript based** Gulpfile 
 - **Useful Gulpfiles structure** with tasks, utils etc
 - Full **bower support** (Automatic concat and optimize bower components from bower.js)
-- **LiveReload** support (Chrome extension needed)
+- **BrowserSync** support with *.xip.io external link (no need Chrome extension)
 - **Service tasks:**
   - **block** - creates block in slim and scss folders and append includes in index files
  
