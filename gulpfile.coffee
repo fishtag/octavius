@@ -12,6 +12,10 @@ global.plugins    = require('gulp-load-plugins')({
   replaceString: /\bgulp[\-.]/
 })
 
+# Get project folder name for tunnel use
+path = require('path')
+config.dirname = _.last path.dirname(__filename).split(path.sep)
+
 requireTree './gulp/scripts'
 
 gulp.task 'start', () ->

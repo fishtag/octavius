@@ -1,9 +1,10 @@
 global.browserSync = require 'browser-sync'
-console.log __dirname
+
 browserSync
   xip: true
-  open: "external"
-  browser: "google chrome"
+  tunnel: config.dirname
+  open: 'tunnel'
+  browser: 'google chrome'
   server:
     baseDir: './public'
 
