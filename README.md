@@ -3,7 +3,7 @@ Gulpify project
 This is a simple web project that use Gulp for precompile all assets:
 
 - Slim with include
-- SCSS
+- SCSS with [Autoprefixer](https://github.com/postcss/autoprefixer-core)
 - CoffeeScript
 - Optimize images
 - Generate sprites from images folder
@@ -73,4 +73,3 @@ This task creates block in your app/slim and scss/includes folders and append in
 - Favicon generation for all devices
 - Check npm packages installation status
 - Production mode with uglify support
-- Browser error reports via LiveReload functionality
