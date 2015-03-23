@@ -1,7 +1,9 @@
 default:
-  livereload:
-    express_port: 4000
-    livereload_port: 35729
+  deploy:
+    root: 'public'
+    hostname: 'fishtag.ru'
+    destination: '/home/fishtag/data/www/tmp'
+    shell: 'ssh'
   html:
     slim:
       pretty: true

@@ -12,6 +12,7 @@ paths =
   app_short: base.app_short
   bower: 'bower_components'
   assets: base.assets
+  public: base.public
 
 # Images task
   images:
