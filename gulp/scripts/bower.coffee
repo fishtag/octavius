@@ -68,5 +68,6 @@ gulp.task 'bower-packages', () ->
     .pipe plugins.concat 'libraries.js'
     .pipe gulp.dest "#{paths.assets}js"
 
-plugins.watch "bower.json", () ->
-  sequence 'bower-packages', 'livereload'
+unless production
+  plugins.watch "bower.json", () ->
+    sequence 'bower-packages', 'livereload'

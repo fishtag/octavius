@@ -26,9 +26,10 @@ gulp.task "iconsfont", ->
           .pipe gulp.dest "./app/scss/includes"
     .pipe gulp.dest paths.iconsfonts.dest
 
-# Start task on gulp start
-gulp.start "iconsfont"
+unless production
+  # Start task on gulp start
+  gulp.start "iconsfont"
 
-# Start watch process
-plugins.watch paths.app_short + 'svg/**/*', () ->
-  sequence 'iconsfont', 'styles', 'livereload' # Regenerate iconsfont and scss after svg folder changes
+  # Start watch process
+  plugins.watch paths.app_short + 'svg/**/*', () ->
+    sequence 'iconsfont', 'styles', 'livereload' # Regenerate iconsfont and scss after svg folder changes

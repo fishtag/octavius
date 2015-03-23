@@ -25,8 +25,9 @@ gulp.task "css-import", ->
   .pipe plugins.cssimport { extensions: ["css"] }
   .pipe gulp.dest paths.styles.dest
 
-# Start task on gulp start
-gulp.start 'styles'
-
-plugins.watch paths.app_short+'scss/**/*.scss', () ->
+unless production
+  # Start task on gulp start
   gulp.start 'styles'
+
+  plugins.watch paths.app_short+'scss/**/*.scss', () ->
+    gulp.start 'styles'

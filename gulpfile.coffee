@@ -1,5 +1,8 @@
 require './gulp/utils'
+argv = require('optimist').argv
+isProduction = argv.production
 
+global.production = if (isProduction) then true else false
 global.yaml       = require 'node-yaml-config'
 global.config     = yaml.load './gulp/config.yml'
 global.gulp       = require 'gulp'
@@ -17,6 +20,9 @@ path = require('path')
 config.dirname = _.last path.dirname(__filename).split(path.sep)
 
 requireTree './gulp/scripts'
+
+if production
+  gulp.start 'production'
 
 gulp.task 'start', () ->
   sequence 'bower', 'bower-packages', () ->

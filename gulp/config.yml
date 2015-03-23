@@ -4,6 +4,20 @@ default:
     hostname: 'fishtag.ru'
     destination: '/home/fishtag/data/www/tmp'
     shell: 'ssh'
+  production:
+    tasks:
+      - bower
+      - bower-packages
+      - coffee
+      - fonts
+      - slimRender
+      - htmlInclude
+      - iconsfont
+      - images
+      - sounds
+      - sprite
+      - styles
+      - vendor
   html:
     slim:
       pretty: true

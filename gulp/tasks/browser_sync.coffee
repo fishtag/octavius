@@ -1,5 +1,8 @@
 global.browserSync = require 'browser-sync'
 
+if production
+  return
+
 browserSync
   xip: true
   tunnel: config.dirname

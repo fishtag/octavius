@@ -25,6 +25,7 @@
     "gulp-file-include": "^0.4.1",
     "gulp-filter": "^2.0.2",
     "gulp-iconfont": "^1.0.0",
+    "gulp-if": "^1.2.5",
     "gulp-imagemin": "^0.6.1",
     "gulp-include": "^0.2.3",
     "gulp-jsbeautifier": "0.0.4",

@@ -7,8 +7,9 @@ gulp.task 'images', () ->
     }
   .pipe gulp.dest paths.images.dest
 
-# Start task on gulp start
-gulp.start "images"
+unless production
+  # Start task on gulp start
+  gulp.start "images"
 
-plugins.watch paths.app_short+'images/**/*.*', () ->
-  sequence 'images', 'livereload'
+  plugins.watch paths.app_short+'images/**/*.*', () ->
+    sequence 'images', 'livereload'
