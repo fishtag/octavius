@@ -16,7 +16,8 @@ default:
       - images
       - sounds
       - sprite
-      - styles
+      - sass
+      - css-import
       - vendor
   html:
     slim:
