@@ -3,9 +3,10 @@ gulp.task "fonts", ->
   gulp.src paths.fonts.src
     .pipe gulp.dest paths.fonts.dest
 
-# Start task on gulp start
-gulp.start "fonts"
+unless skipBuild
+  # Start task on gulp start
+  gulp.start "fonts"
 
-# Start watch process
-plugins.watch paths.app_short + 'fonts/**/*', () ->
-  sequence 'fonts', 'livereload'
+  # Start watch process
+  plugins.watch paths.app_short + 'fonts/**/*', () ->
+    sequence 'fonts', 'livereload'

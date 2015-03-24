@@ -7,7 +7,7 @@ gulp.task 'images', () ->
     }
   .pipe gulp.dest paths.images.dest
 
-unless production
+unless skipBuild
   # Start task on gulp start
   gulp.start "images"
 

@@ -9,8 +9,9 @@ gulp.task 'coffee', () ->
     .pipe sourcemaps.write()
     .pipe gulp.dest "#{paths.assets}/js"
 
-# Start task on gulp start
-gulp.start "coffee"
+unless skipBuild
+  # Start task on gulp start
+  gulp.start "coffee"
 
-plugins.watch paths.app_short+'coffee/**/*.coffee', () ->
-  sequence 'coffee', 'livereload'
+  plugins.watch paths.app_short+'coffee/**/*.coffee', () ->
+    sequence 'coffee', 'livereload'

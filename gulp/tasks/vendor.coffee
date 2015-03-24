@@ -4,6 +4,6 @@ gulp.task 'vendor', () ->
   .pipe plugins.concat('vendor.js')
   .pipe gulp.dest "#{paths.assets}/js"
 
-unless production
+unless skipBuild
   # Start task on gulp start
   gulp.start "vendor"

@@ -1,8 +1,9 @@
 require './gulp/utils'
 argv = require('optimist').argv
 isProduction = argv.production
+isDeploy = argv.deploy
 
-global.production = if (isProduction) then true else false
+global.skipBuild = if (isProduction or isDeploy) then true else false
 global.yaml       = require 'node-yaml-config'
 global.config     = yaml.load './gulp/config.yml'
 global.gulp       = require 'gulp'
@@ -21,12 +22,17 @@ config.dirname = _.last path.dirname(__filename).split(path.sep)
 
 requireTree './gulp/scripts'
 
-if production
-  gulp.start 'production'
+defaultTask = 'start'
+
+if isProduction
+  defaultTask = 'production'
+
+if isDeploy
+  defaultTask = 'deploy'
 
 gulp.task 'start', () ->
   sequence 'bower', 'bower-packages', () ->
     requireTree './gulp/tasks'
 
 # Start default Gulp Task
-gulp.task 'default', ['start']
+gulp.task 'default', [defaultTask]

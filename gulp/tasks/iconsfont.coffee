@@ -26,7 +26,7 @@ gulp.task "iconsfont", ->
           .pipe gulp.dest "./app/scss/includes"
     .pipe gulp.dest paths.iconsfonts.dest
 
-unless production
+unless skipBuild
   # Start task on gulp start
   gulp.start "iconsfont"
 

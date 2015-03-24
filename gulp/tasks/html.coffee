@@ -14,7 +14,7 @@ gulp.task "htmlInclude", ["slimRender"], () ->
   .pipe plugins.jsbeautifier config.html.beautifier
   .pipe gulp.dest paths.slim.dest
 
-unless production
+unless skipBuild
   # Start task on gulp start
   sequence 'slimRender', 'htmlInclude'
 

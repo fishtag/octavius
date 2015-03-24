@@ -3,6 +3,6 @@ gulp.task "sounds", ->
   gulp.src paths.sounds.src
     .pipe gulp.dest paths.sounds.dest
 
-unless production
+unless skipBuild
   # Start task on gulp start
   gulp.start "sounds"

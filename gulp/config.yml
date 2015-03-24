@@ -3,6 +3,8 @@ default:
     root: 'public'
     hostname: 'fishtag.ru'
     destination: '/home/fishtag/data/www/tmp'
+    recursive: true
+    clean: true
     shell: 'ssh'
   production:
     tasks:
