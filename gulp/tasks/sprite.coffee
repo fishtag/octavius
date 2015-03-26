@@ -1,7 +1,7 @@
 spriteConfig =
   imgName: "icons.png"
   cssName: "_icons.scss"
-  imgPath: paths.images.dest.replace("public", "") + "icons.png"
+  imgPath: paths.images.dest.replace("/public/assets", ".") + "icons.png"
 
 gulp.task "sprite", ->
   spriteData = gulp.src paths.sprite.src
