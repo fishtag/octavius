@@ -1,11 +1,11 @@
 default:
   deploy:
     ftp:
-      host: 'fishtag.ru'
-      user: 'fishtag'
-      password: '123123qq'
+      host: 'localhost'
+      user: 'username'
+      password: 'password'
       parallel: 10
-      remotePath: 'www/tmp/strategy'
+      remotePath: ''
     rsync:
       root: 'public'
       hostname: 'localhost'
