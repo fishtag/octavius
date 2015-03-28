@@ -1,5 +1,7 @@
 config = global.config.deploy
-colors = require('colors')
+ftp    = require 'vinyl-ftp'
+colors = require 'colors'
+gutil = require 'gulp-util'
 
 gulp.task 'deploy', () ->
   if argv.ftp
@@ -8,15 +10,19 @@ gulp.task 'deploy', () ->
     sequence 'rsync', 'deploy-success'
 
 gulp.task 'ftp', () ->
+  _.extend config.ftp, {log: gutil.log}
+  connection = ftp.create config.ftp
+
   gulp.src(paths.public+'**/*')
-  .pipe plugins.ftp config.ftp
+    .pipe connection.newer config.ftp.remotePath
+    .pipe connection.dest config.ftp.remotePath
 
 gulp.task 'rsync', () ->
   gulp.src(paths.public+'**/*')
   .pipe plugins.rsync config.rsync
 
 gulp.task 'deploy-success', () ->
-  console.log "Deploy: build succeeded for '#{config.root}' folder".green
+  console.log "Deploy: build succeeded for '#{config.rsync.root}' folder".green
   process.exit code=0
 
 
