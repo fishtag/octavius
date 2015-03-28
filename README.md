@@ -9,6 +9,7 @@ This is a simple web project that use Gulp for precompile all assets:
 - Generate sprites from images folder
 - Generate WebFont from folder of SVG files
 - Organize folder structure (copying fonts, sounds etc)
+- Deploy by ssh or ftp
 
 ## Main features
 
@@ -57,6 +58,25 @@ All bower components automatically concatenates into one file libraries.js. Gulp
 `bower install backbone --save`
 
 *Important! Gulp does not find your component without node in bower.json. Flag **--save** means that the information about the component will be included in the main bower.json file.*
+
+----
+
+# Deploy tasks
+## ssh
+You can deploy your public folder by ssh with this command:
+
+`gulp --deploy`
+
+All configuration options available in **/gulp/config.yml** file **deploy.rsync** section
+
+*Important! You must have **ssh public key** on your target server. You can read more about this [here](https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2).*
+
+## ftp
+You can deploy your public folder via ftp with this command:
+
+`gulp --deploy --ftp`
+
+All configuration options available in **/gulp/config.yml** file **deploy.ftp** section.
 
 ----
 

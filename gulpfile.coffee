@@ -1,5 +1,6 @@
 require './gulp/utils'
-argv = require('optimist').argv
+global.argv = require('optimist').argv
+
 isProduction = argv.production
 isDeploy = argv.deploy
 

@@ -1,11 +1,17 @@
 default:
   deploy:
-    root: 'public'
-    hostname: 'fishtag.ru'
-    destination: '/home/fishtag/data/www/tmp'
-    recursive: true
-    clean: true
-    shell: 'ssh'
+    ftp:
+      host: 'localhost'
+      user: 'username'
+      pass: 'password'
+      remotePath: ''
+    rsync:
+      root: 'public'
+      hostname: 'localhost'
+      destination: '/home/'
+      recursive: true
+      clean: true
+      shell: 'ssh'
   production:
     tasks:
       - bower
