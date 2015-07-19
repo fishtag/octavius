@@ -32,6 +32,10 @@ This is a simple web project that use Gulp for precompile all assets:
 ## Installation (Mac OS)
 ### Node.js
 `brew install node`
+
+### Node Version Manager
+`brew install nvm`
+
 ### Node Package Manager (NPM)
 *Note: strongly unrecommended to install NPM via Homebrew, because there may be problems with access permissions*
 
@@ -39,11 +43,24 @@ This is a simple web project that use Gulp for precompile all assets:
 ### Clone Git project
 `git clone https://github.com/fishtag/gulpify.git`
 
+### Install latest tested Node.js release
+`nvm install 0.12.7`
+
+*Note: later you can use this construction for choose correct node.js version*
+
+`nvm use 0.12.7`
+
 ### Install required NPM packages
 `npm install`
 
-### Install required Ruby gems
-`gem install slim compass`
+### Install Ruby version manager
+`brew install rbenv`
+
+### Install latest tested Ruby version
+`rbenv install 2.1.5`
+
+### Install required Ruby gems via bundler
+`gem install bundler && bundle`
 
 ## Start gulp
 *Note: Use Webstorm 9 Gulp support or start process from your Terminal with this command:*
@@ -57,7 +74,7 @@ All bower components automatically concatenates into one file libraries.js. Gulp
 
 `bower install backbone --save`
 
-*Important! Gulp does not find your component without node in bower.json. Flag **--save** means that the information about the component will be included in the main bower.json file.*
+*Important! Gulp does not find your component without dependency in bower.json. Flag **--save** means that the information about the component will be included in the main bower.json file.*
 
 ----
 
