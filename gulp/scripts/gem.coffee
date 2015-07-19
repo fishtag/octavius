@@ -8,6 +8,6 @@ global.isGemInstalled = (gem) ->
 global.checkGem = (gem) ->
   unless isGemInstalled gem
     console.log """Error: Ruby gem '#{gem}' is not installed. Please run
-      \tsudo gem install #{gem}
+      \tbundle install #{gem}
       in your console.""".red
     process.exit code=0
