@@ -54,7 +54,7 @@ This is a simple web project that use Gulp for precompile all assets:
 `npm install`
 
 ### Install Ruby version manager
-`brew install rbenv`
+`brew install rbenv ruby-build`
 
 ### Install latest tested Ruby version
 `rbenv install 2.1.5`

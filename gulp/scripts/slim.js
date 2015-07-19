@@ -11,15 +11,32 @@
 
     PLUGIN_NAME = 'gulp-slim';
 
+    command = function(cmd, callback) {
+        var command;
+
+        try {
+            command = which(cmd);
+        } catch (err) {
+
+            if (callback) {
+                callback(127, '', String(err), '');
+            }
+
+            return false;
+        }
+
+        return command;
+    };
+
     module.exports = function(options) {
         var args, cmnd;
         if (options == null) {
             options = {};
         }
-        cmnd = 'slimrb';
+        cmnd = command('slimrb', function() {});
         args = [];
         if (options.bundler) {
-            cmnd = 'bundle';
+            cmnd = command('bundle', function() {});
             args = ['exec', 'slimrb'];
         }
         args.push('-s');
@@ -47,7 +64,6 @@
             args.push('-r');
             args.push('slim/include');
         }
-
         if (options.data) {
             args.push('--locals');
             args.push(JSON.stringify(options.data));
@@ -75,6 +91,7 @@
             ext = options.erb ? '.erb' : '.html';
             file.path = gutil.replaceExtension(file.path, ext);
             program = spawn(cmnd, args, {
+                cwd: process.cwd(),
                 env: {
                     "LC_CTYPE":"ru_RU.UTF-8"
                 }

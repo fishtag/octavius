@@ -8,6 +8,7 @@ gulp.task "sass", ->
   sassFiles = gulp.src paths.styles.src + "application.scss"
   .pipe plugins.compass {
       require: 'sass-globbing'
+      bundle_exec: true
       sourcemap: true
       css: paths.styles.dest
       sass: paths.styles.src
