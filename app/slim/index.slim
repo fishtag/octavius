@@ -6,10 +6,9 @@ html
     link href="assets/css/vendor.css" type="text/css" rel="stylesheet"
     link href="assets/css/application.css" type="text/css" rel="stylesheet"
   body
-    '
-      ##include('include/header.html')
-      ##include('include/article.html')
-      ##include('include/footer.html')
+    include include/header
+    include include/article
+    include include/footer
 
     script src="assets/js/libraries.js"
     script src="assets/js/vendor.js"

@@ -31,6 +31,10 @@ default:
   html:
     slim:
       pretty: true
+      include: true
+      options:
+        - encoding='utf-8'
+        - include_dirs=['app/slim/']
     include:
       prefix: '##'
       basepath: '@file'

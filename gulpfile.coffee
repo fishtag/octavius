@@ -4,9 +4,10 @@ global.argv = require('optimist').argv
 isProduction = argv.production
 isDeploy = argv.deploy
 
+global.app = {}
 global.skipBuild = if (isProduction or isDeploy) then true else false
 global.yaml       = require 'node-yaml-config'
-global.config     = yaml.load './gulp/config.yml'
+global.app.config     = yaml.load './gulp/config.yml'
 global.gulp       = require 'gulp'
 global.fs         = require 'fs'
 global.sequence   = require 'run-sequence'
@@ -19,7 +20,7 @@ global.plugins    = require('gulp-load-plugins')({
 
 # Get project folder name for tunnel use
 path = require('path')
-config.dirname = _.last path.dirname(__filename).split(path.sep)
+app.config.dirname = _.last path.dirname(__filename).split(path.sep)
 
 requireTree './gulp/scripts'
 

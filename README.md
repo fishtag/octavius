@@ -88,8 +88,14 @@ This task creates block in your app/slim and scss/includes folders and append in
 
 ----
 
+# Changelog
+
+## v0.2
+- Fix v0.12.* node.js issues. Now you can use latest engine in your projects
+- Replace gulp-file-include package with build-in Slim include plugin
+- Replace v0.12.* node.js release conflict execSync package with shelljs
+
 # Upcoming features
 
 - Favicon generation for all devices
-- Check npm packages installation status
 - Production mode with uglify support

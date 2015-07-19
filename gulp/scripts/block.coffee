@@ -1,34 +1,33 @@
 readline = require('readline')
 argv = require('optimist').argv
 blockName = argv.name
-config = global.config.block
 
 createBlock = (blockName) ->
   sequence 'block-slim', 'block-style', () ->
     console.log 'Block is successful created!'.green
 
 gulp.task 'block-slim', () ->
-  gulp.src config.slim.template
+  gulp.src app.config.slim.template
     .pipe plugins.consolidate 'lodash', {
       blockName: blockName
     }
     .pipe plugins.rename "#{blockName}.slim"
-    .pipe gulp.dest config.slim.target
+    .pipe gulp.dest app.config.slim.target
 
-  fs.appendFileSync config.slim.include, """
+  fs.appendFileSync app.config.slim.include, """
 
     '
-      ##include('include/#{blockName}.html')
+      include include/#{blockName}
     """
 
 gulp.task 'block-style', () ->
-  gulp.src config.styles.template
+  gulp.src app.config.styles.template
     .pipe plugins.consolidate 'lodash', {
       blockName: blockName
     }
     .pipe plugins.rename "_#{blockName}.scss"
-    .pipe gulp.dest config.styles.target
-  fs.appendFileSync config.styles.include, """
+    .pipe gulp.dest app.config.styles.target
+  fs.appendFileSync app.config.styles.include, """
 
   @import "includes/#{blockName}";
 """

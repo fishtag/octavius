@@ -1,9 +1,9 @@
-execSync = require("exec-sync")
+shelljs = require("shelljs/global")
 colors = require('colors')
 
 global.isGemInstalled = (gem) ->
-  stdout = execSync "gem list -i #{gem}"
-  (stdout == 'true')
+  stdout = exec "gem list -i #{gem}", { silent: true }
+  (stdout.output.trim() == 'true')
 
 global.checkGem = (gem) ->
   unless isGemInstalled gem

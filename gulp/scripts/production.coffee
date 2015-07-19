@@ -1,8 +1,8 @@
-config = global.config.production
+localConfig = global.app.config.production
 requireTree './gulp/tasks'
 
 gulp.task 'production', () ->
-  tasks = _.values config.tasks
+  tasks = _.values localConfig.tasks
   tasks.push 'production-success'
   sequence.apply this, tasks
 
