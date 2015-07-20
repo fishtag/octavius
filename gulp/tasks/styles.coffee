@@ -1,17 +1,14 @@
-checkGem 'compass'
-checkGem 'sass-globbing'
+sassGlobbing = require 'node-sass-globbing'
 
 gulp.task 'styles', ->
   sequence 'sass', 'css-import'
 
 gulp.task "sass", ->
   sassFiles = gulp.src paths.styles.src + "application.scss"
-  .pipe plugins.compass {
-      require: 'sass-globbing'
-      bundle_exec: true
-      sourcemap: true
-      css: paths.styles.dest
-      sass: paths.styles.src
+  .pipe plugins.sass {
+      sourceMap: true
+      sourceMapEmbed: true
+      importer: sassGlobbing
     }
   .on "error", handleError
   .pipe plugins.autoprefixer {

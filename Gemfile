@@ -6,6 +6,3 @@ Encoding.default_external = Encoding::UTF_8
 Encoding.default_internal = Encoding::UTF_8
 
 gem 'slim', '>= 3.0.2'
-gem 'compass'
-gem 'sass-globbing'
-gem 'sass-css-importer'
