@@ -7,24 +7,22 @@ gulp.task "iconsfont", ->
   fontName = 'iconsfont'
 
   gulp.src paths.iconsfonts.src
-    .pipe plugins.svgmin() # Optimize each SVG icon
-    .pipe plugins.iconfont { # Generate icon font
+  .pipe plugins.svgmin() # Optimize each SVG icon
+  .pipe(plugins.iconfont({ # Generate icon font
       fontName: fontName
-      fontHeight: 500
-      normalize: true
+    })).on 'glyphs', (glyphs, options) -> # Generate scss template that includes to applications scss
+    gulp.src "./app/scss/includes/_#{fontName}.scss" # Remove old scss
+    .pipe vinylPaths del
+    gulp.src "./gulp/templates/_#{fontName}.scss"
+    .pipe plugins.consolidate 'lodash', {
+      glyphs: glyphs.map (glyph) ->
+        return { name: glyph.name, codepoint: glyph.unicode[0].charCodeAt(0) }
+      fontName: fontName
+      fontPath: "../fonts/#{fontName}/"
+      className: fontName
     }
-      .on 'codepoints', (codepoints, options) -> # Generate scss template that includes to applications scss
-        gulp.src "./app/scss/includes/_#{fontName}.scss" # Remove old scss
-          .pipe vinylPaths del
-        gulp.src "./gulp/templates/_#{fontName}.scss"
-          .pipe plugins.consolidate 'lodash', { # Use special template for lodash
-            glyphs: codepoints
-            fontName: fontName
-            fontPath: "../fonts/#{fontName}/"
-            className: fontName
-          }
-          .pipe gulp.dest "./app/scss/includes"
-    .pipe gulp.dest paths.iconsfonts.dest
+    .pipe gulp.dest "./app/scss/includes"
+  .pipe gulp.dest paths.iconsfonts.dest
 
 unless skipBuild
   # Start task on gulp start
