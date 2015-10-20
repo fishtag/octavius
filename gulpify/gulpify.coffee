@@ -4,6 +4,7 @@ global.Gulpify = class Gulpify
   log: require './core/log'
   develop: true
   watch: true
+
   constructor: ->
     @tasks = new (require './core/tasks')()
     @services = new (require './core/services')()
