@@ -7,8 +7,13 @@ class Services
     @options = _.extend Services::options, options
     @services = {}
 
-  load: (path = @options.services) ->
-    _.each requireDirectory(module, path), (serviceClass, name) =>
-      @services[name] = new serviceClass(name)
+  load: (path = @options.services, callback) ->
+    async.map requireDirectory(module, path), @loadService, (services) =>
+      @services = services
+      callback()
+
+  loadService: (serviceClass, callback) ->
+    Gulpify::log.info "initialize #{serviceClass.name} service"
+    "#{serviceClass.name}": new serviceClass()
 
 module.exports = Services

@@ -1,7 +1,7 @@
 Service = require "#{__base}/core/service"
 browserSync = require 'browser-sync'
 
-class Browsersync extends Service
+class BrowsersyncService extends Service
   events:
     'reload': 'reload'
 
@@ -19,4 +19,4 @@ class Browsersync extends Service
   reload: (options) ->
     @server.reload options
 
-module.exports = Browsersync
+module.exports = BrowsersyncService

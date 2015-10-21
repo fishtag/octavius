@@ -14,8 +14,8 @@ global.Gulpify = class Gulpify
   start: ->
     Gulpify::log.info 'trying to start..'
     @_started = true
-    @tasks.load().start()
     @services.load()
+    @tasks.load().start()
     Gulpify::log.info 'application is started!'
 
   stop: (callback) ->

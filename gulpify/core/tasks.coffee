@@ -1,15 +1,17 @@
-requireDirectory = require 'require-directory'
 class Tasks
-  options:
-    tasks: "#{__base}/tasks"
-
   constructor: (options = {}) ->
     @options = _.extend Tasks::options, options
     @tasks = {}
 
-  load: (path = @options.tasks) ->
-    _.each requireDirectory(module, path), (taskClass, name) =>
-      @tasks[name] = new taskClass(name)
+  load: (path = "#{__base}/tasks") ->
+    files = require(path);
+    _.each files, (taskFile, name) =>
+      unless taskFile.subtasks
+        @tasks[name] = new taskFile(name)
+      else
+        _.each taskFile.subtasks, (subtaskClass, name) =>
+          @tasks[name] = new subtaskClass(name)
+        @tasks[name] = new (taskFile.task)(name)
     @
 
   start: ->

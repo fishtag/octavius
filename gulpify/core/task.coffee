@@ -8,34 +8,32 @@ class Task
 
   defaults:
     asset: true
-    develop: true
+    develop: false
     livereload: false
 
-  constructor: (filename, options = {})->
+  constructor: (filename, options = {}) ->
     @filename = filename
-    @options = _.extend @constructor::defaults, @constructor::options, options
+    @options = _.extend {}, Task::defaults, @constructor::options, options
+    @_buildSequence()
     @initialize() if @initialize
 
-    _.bindAll @, '_develop', '_production'
-    gulp.task @filename, @task()
+    gulp.task @filename, () => @task()
 
   start: ->
     @run()
     @watch() if @options.watch and Gulpify::watch
 
   run: ->
-    Sequence @filename, () =>
-      Radio.emit('reload', @options.livereload) if @options.livereload
+    Sequence.apply @, @sequence
 
   watch: ->
-    Watch @options.watch, () =>
-      @run()
+    Watch(@options.watch, () => @run())
 
   task: ->
     if @options.develop
-      @_develop
+      @_develop()
     else
-      @_production
+      @_production()
 
   _develop: ->
     Gulpify::log.info "#{@filename} develop"
@@ -47,6 +45,14 @@ class Task
       @production()
     else
       @develop()
+
+  _buildSequence: ->
+    @sequence = [@filename]
+    if @options.livereload
+      @sequence.push () =>
+        Radio.emit('browsersync:reload', @options.livereload)
+    if @options.dependencies
+      @sequence = _.union @options.dependencies, @sequence
 
   paths: () ->
     source = if @constructor::_paths.source then @constructor::_paths.source else @filename

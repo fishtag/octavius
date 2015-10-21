@@ -1,5 +1,6 @@
 Task = require "#{__base}/core/task"
 Jade = require 'gulp-jade'
+Minify = require 'gulp-htmlmin'
 
 class JadeTask extends Task
   _paths:
@@ -17,6 +18,8 @@ class JadeTask extends Task
   production: ->
     gulp.src @paths().source + '/*.jade'
       .pipe Jade()
+      .pipe Minify
+        collapseWhitespace: true
       .pipe gulp.dest @paths().destination
 
 module.exports = JadeTask
