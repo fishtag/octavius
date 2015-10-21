@@ -13,12 +13,14 @@ class CoffeeTask extends Task
     gulp.src @paths().source + '**/*.coffee'
       .pipe Sourcemaps.init()
       .pipe Coffee()
+        .on("error", Gulpify::log.error)
       .pipe Sourcemaps.write()
       .pipe gulp.dest @paths().destination
 
   production: ->
     gulp.src @paths().source + '**/*.coffee'
       .pipe Coffee()
+        .on("error", Gulpify::log.error)
       .pipe gulp.dest @paths().destination
 
 module.exports = CoffeeTask

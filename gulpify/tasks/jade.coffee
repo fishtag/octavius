@@ -13,11 +13,13 @@ class JadeTask extends Task
   develop: ->
     gulp.src @paths().source + '/*.jade'
       .pipe Jade()
+        .on("error", Gulpify::log.error)
       .pipe gulp.dest @paths().destination
 
   production: ->
     gulp.src @paths().source + '/*.jade'
       .pipe Jade()
+        .on("error", Gulpify::log.error)
       .pipe Minify
         collapseWhitespace: true
       .pipe gulp.dest @paths().destination

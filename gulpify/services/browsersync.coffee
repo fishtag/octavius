@@ -1,5 +1,4 @@
 Service = require "#{__base}/core/service"
-browserSync = require 'browser-sync'
 
 class BrowsersyncService extends Service
   events:

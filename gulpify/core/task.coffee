@@ -8,7 +8,7 @@ class Task
 
   defaults:
     asset: true
-    develop: false
+    develop: true
     livereload: false
 
   constructor: (filename, options = {}) ->
@@ -48,8 +48,9 @@ class Task
 
   _buildSequence: ->
     @sequence = [@filename]
+    console.log @filename, @options.livereload
     if @options.livereload
-      @sequence.push () =>
+      @sequence.push (arg) =>
         Radio.emit('browsersync:reload', @options.livereload)
     if @options.dependencies
       @sequence = _.union @options.dependencies, @sequence

@@ -4,8 +4,7 @@ class Tasks
     @tasks = {}
 
   load: (path = "#{__base}/tasks") ->
-    files = require(path);
-    _.each files, (taskFile, name) =>
+    _.each require(path), (taskFile, name) =>
       unless taskFile.subtasks
         @tasks[name] = new taskFile(name)
       else

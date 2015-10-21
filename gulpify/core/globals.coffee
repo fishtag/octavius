@@ -4,6 +4,7 @@ global.__public = __dirname + '/../../public'
 global._ = require 'underscore'
 global.async = require 'async'
 global.requireDirectory = require 'require-directory'
+global.browserSync = require 'browser-sync'
 global.Radio = new (require 'events').EventEmitter()
 global.gulp = require 'gulp'
 
