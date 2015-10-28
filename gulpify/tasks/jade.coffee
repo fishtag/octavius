@@ -1,5 +1,7 @@
 Task = require "#{__base}/core/task"
+Path = require 'path'
 Jade = require 'gulp-jade'
+Data = require 'gulp-data'
 Minify = require 'gulp-htmlmin'
 
 class JadeTask extends Task
@@ -12,6 +14,9 @@ class JadeTask extends Task
 
   develop: ->
     gulp.src @paths().source + '/*.jade'
+      .pipe Data (file) ->
+        require "#{global.__app}/data/#{Path.basename(file.path, '.jade')}.json"
+      .on("error", Gulpify::log.error)
       .pipe Jade()
         .on("error", Gulpify::log.error)
       .pipe gulp.dest @paths().destination

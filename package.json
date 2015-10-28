@@ -12,6 +12,7 @@
     "gulp-coffee": "^2.3.1",
     "gulp-concat": "^2.6.0",
     "gulp-cssmin": "^0.1.7",
+    "gulp-data": "^1.2.0",
     "gulp-filter": "^3.0.1",
     "gulp-htmlmin": "^1.2.0",
     "gulp-jade": "^1.1.0",
@@ -19,8 +20,10 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-watch": "^4.3.5",
     "main-bower-files": "^2.9.0",
+    "node-sass-import-once": "^1.2.0",
     "require-directory": "^2.1.1",
     "run-sequence": "^1.1.4",
     "underscore": "^1.8.3"
-  }
+  },
+  "devDependencies": {}
 }
