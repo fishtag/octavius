@@ -48,10 +48,9 @@ class Task
 
   _buildSequence: ->
     @sequence = [@filename]
-    console.log @filename, @options.livereload
     if @options.livereload
       @sequence.push (arg) =>
-        Radio.emit('browsersync:reload', @options.livereload)
+        Radio.emit('browsersync:reload', {options: @options.livereload})
     if @options.dependencies
       @sequence = _.union @options.dependencies, @sequence
 

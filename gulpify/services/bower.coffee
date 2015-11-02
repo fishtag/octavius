@@ -6,6 +6,9 @@ class BowerService extends Service
     'install': 'install'
     'prune': 'prune'
 
+  initialize: ->
+    @start()
+
   install: (callback) ->
     Bower.commands.install()
 

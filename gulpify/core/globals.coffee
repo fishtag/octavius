@@ -8,6 +8,9 @@ global.browserSync = require 'browser-sync'
 global.Radio = new (require 'events').EventEmitter()
 global.gulp = require 'gulp'
 
+YamlConfig = require 'node-yaml-config'
+global.Config = YamlConfig.load "#{__base}/config.yml"
+
 global.requireTasks = (module, path) ->
   requireDirectory(module, path, {
     rename: (filename, joined, filename2) ->

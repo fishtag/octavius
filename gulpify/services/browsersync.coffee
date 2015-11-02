@@ -14,8 +14,11 @@ class BrowsersyncService extends Service
       browser: 'google chrome'
       server:
         baseDir: './public'
+    @callback(undefined, @)
 
   reload: (options) ->
-    @server.reload options
+    @server.reload options.options
+    options.callback('All browsers successfull reloaded') if options.callback
+
 
 module.exports = BrowsersyncService

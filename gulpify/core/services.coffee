@@ -7,13 +7,17 @@ class Services
     @options = _.extend Services::options, options
     @services = {}
 
-  load: (path = @options.services, callback) ->
-    async.map requireDirectory(module, path), @loadService, (services) =>
-      @services = services
+  load: (callback) ->
+    services = requireDirectory(module, @options.services)
+    tasks = []
+    _.each services, (serviceClass, name) =>
+      tasks.push (callback) =>
+        Gulpify::log.info "initialize #{serviceClass.name} service"
+        @services[name] = new serviceClass(callback)
+    async.series tasks, (err, results) ->
       callback()
 
-  loadService: (serviceClass, callback) ->
-    Gulpify::log.info "initialize #{serviceClass.name} service"
-    "#{serviceClass.name}": new serviceClass()
+  get: (serviceName) ->
+    @services[serviceName]
 
 module.exports = Services

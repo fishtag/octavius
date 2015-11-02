@@ -8,15 +8,15 @@ global.Gulpify = class Gulpify
   constructor: ->
     @tasks = new (require './core/tasks')()
     @services = new (require './core/services')()
-
     @_started = false
 
   start: ->
     Gulpify::log.info 'trying to start..'
     @_started = true
-    @services.load()
-    @tasks.load().start()
-    Gulpify::log.info 'application is started!'
+    @services.load () =>
+      @webserver = new (require './core/web')(@services)
+      @tasks.load().start()
+      Gulpify::log.info 'application is started!'
 
   stop: (callback) ->
     Gulpify::log.info 'trying to stop..'

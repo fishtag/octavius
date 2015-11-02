@@ -1,7 +1,11 @@
 class Service
-  constructor: ->
+  constructor: (callback) ->
+    @callback = callback
     @_initEvents()
     @initialize() if @initialize
+
+  start: ->
+    @callback(undefined, @)
 
   _initEvents: ->
     _.each @constructor::events, (func, event) =>
