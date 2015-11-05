@@ -14,8 +14,6 @@ This is a simple Node.js project that use Gulp for precompile all assets:
 - **Useful Gulpfiles structure** with tasks, utils etc
 - Full **bower support** (Automatic concat and optimize bower components from bower.js)
 - **BrowserSync** support with *.xip.io external link (no need Chrome extension)
-- **Service tasks:**
-  - **block** - creates block in slim and scss folders and append includes in index files
  
 ## Requirements
 - *nix like OS (Mac OS is recommended)
@@ -46,15 +44,6 @@ This is a simple Node.js project that use Gulp for precompile all assets:
 ### Install required NPM packages
 `npm install --save-dev octavius`
 
-### Install Ruby version manager
-`brew install rbenv ruby-build`
-
-### Install latest tested Ruby version
-`rbenv install 2.1.5`
-
-### Install required Ruby gems via bundler
-`gem install bundler && bundle`
-
 ### Create index.js file with this content
 ```
 Octavius = require('octavius');
@@ -79,7 +68,7 @@ class SoundsTask extends CopyTask
 module.exports = SoundsTask
 ```
 
-After restart Octavious your custom task will be added into Tasks stack.
+After restart Octavius your custom task will be added into Tasks stack.
 
 ### Bower components installation
 All bower components automatically concatenates into one file libraries.js. Gulp get main file of each component by its 'main' attribute in bower.json. So if you want automatically attach new component to your project you shoud do it with this command:
