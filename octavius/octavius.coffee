@@ -1,6 +1,6 @@
 require './core/globals'
 
-global.Octavius = class Octavius
+global.Application = class Octavius
   log: require './core/log'
   develop: true
   watch: true
@@ -11,17 +11,17 @@ global.Octavius = class Octavius
     @_started = false
 
   start: ->
-    Octavius::log.info 'trying to start..'
+    Application::log.info 'trying to start..'
     @_started = true
     @services.load () =>
       @webserver = new (require './core/web')(@services)
       @tasks.load().start()
-      Octavius::log.info 'application is started!'
+      Application::log.info 'application is started!'
 
   stop: (callback) ->
-    Octavius::log.info 'trying to stop..'
+    Application::log.info 'trying to stop..'
     @_started = false
-    Octavius::log.info 'application is stopped'
+    Application::log.info 'application is stopped'
     callback()
 
   restart: ->

@@ -6,7 +6,7 @@ class BrowsersyncService extends Service
     'reload': 'reload'
 
   initialize: ->
-    @start() if Octavius::develop
+    @start() if Application::develop
 
   start: ->
     @server = browserSync

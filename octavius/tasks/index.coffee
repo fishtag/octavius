@@ -1,2 +1,4 @@
 path = "#{__base}/tasks"
-module.exports = requireTasks(module, path)
+tasks = Tasks.require(module, path)
+console.log _.keys tasks
+module.exports = tasks

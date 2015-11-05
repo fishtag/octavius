@@ -18,10 +18,10 @@ class MongoService extends Service
       collections: {}
 
   start: ->
-    Octavius::log.info "connecting to remote MongoDB Server"
+    Application::log.info "connecting to remote MongoDB Server"
     MongoClient.connect Config.data.mongodb.uri, (err, db) =>
       @db = db
-      Octavius::log.info "connection to MongoDB Server success"
+      Application::log.info "connection to MongoDB Server success"
       @callback(undefined, @)
 
   collections: (options) ->
@@ -37,11 +37,11 @@ class MongoService extends Service
   getCollection: (collection, callback) ->
     if @cache.collections[collection]
       return (callback) =>
-        Octavius::log.info "MongoDB: receiving data from local cache"
+        Application::log.info "MongoDB: receiving data from local cache"
         callback(undefined, @cache.collections[collection])
     else
       return (callback) =>
-        Octavius::log.info "MongoDB: receiving data from remote server"
+        Application::log.info "MongoDB: receiving data from remote server"
         result = {}
         @db.collection(collection).find().toArray (err, data) =>
           result[collection] = data

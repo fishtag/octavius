@@ -1,4 +1,25 @@
-class Tasks
+class global.Tasks
+  @override: process.cwd()+'/octavius/tasks'
+  @rename: (filename, joined, filename2) ->
+    path = joined.split('octavius/tasks/')[1]
+    .replace '/',':'
+    .replace '.coffee',''
+    path
+
+  @require: (module, path) ->
+    octaviusTasks = requireDirectory module, path, {
+      rename: Tasks.rename
+    }
+
+    overrideTasks = if fileExists(@override)
+      requireDirectory module, Tasks.override, {
+        rename: Tasks.rename
+      }
+    else
+      {}
+
+    _.extend octaviusTasks, overrideTasks
+
   constructor: (options = {}) ->
     @options = _.extend Tasks::options, options
     @tasks = {}

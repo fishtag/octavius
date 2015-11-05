@@ -2,6 +2,6 @@ default:
   vendor:
     css:
       - vendor.css
-  data:
-    mongodb:
-      uri: mongodb://gulpify:YwHAaydw2fjC6k@ds045604.mongolab.com:45604/gulpify
+#  data:
+#    mongodb:
+#      uri: mongodb://gulpify:YwHAaydw2fjC6k@ds045604.mongolab.com:45604/gulpify

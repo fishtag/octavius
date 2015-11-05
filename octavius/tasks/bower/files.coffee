@@ -10,10 +10,12 @@ class BowerFilesTask extends Task
     livereload: false
 
   develop: ->
+    return unless fileExists(__bower)
     gulp.src BowerFiles()
       .pipe gulp.dest @paths().destination
 
   production: ->
+    return unless fileExists(__bower)
     files = BowerFiles()
     gulp.src files
       .pipe Concat 'libraries.js'

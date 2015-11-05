@@ -21,7 +21,7 @@ class Task
 
   start: ->
     @run()
-    @watch() if @options.watch and Octavius::watch
+    @watch() if @options.watch and Application::watch
 
   run: ->
     Sequence.apply @, @sequence
@@ -36,11 +36,11 @@ class Task
       @_production()
 
   _develop: ->
-    Octavius::log.info "#{@filename} develop"
+    Application::log.info "#{@filename} develop"
     @develop()
 
   _production: ->
-    Octavius::log.info "#{@filename} production"
+    Application::log.info "#{@filename} production"
     if @production
       @production()
     else
