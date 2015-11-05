@@ -1,6 +1,5 @@
 Task = require "#{__base}/core/task"
 Path = require 'path'
-fs = require 'fs'
 Jade = require 'gulp-jade'
 Data = require 'gulp-data'
 Minify = require 'gulp-htmlmin'
@@ -36,13 +35,7 @@ class JadeTask extends Task
     result = {}
     _.each JadeTask::_sources, (source) =>
       path = "#{global.__app}/data/#{filename}.#{source}"
-      isset = true
-      try
-        stat = fs.statSync path
-      catch
-        isset = false
-      finally
-        result = @["_#{source}"] if isset
+      result = @["_#{source}"] if fileExists(path)
     result filename, callback
 
   _json: (filename, callback) ->

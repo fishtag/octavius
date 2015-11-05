@@ -1,6 +1,7 @@
 Express = require 'express'
 
 class WebService
+  @port: 2000
   constructor: (services) ->
     @services = services
     @_initServer()
@@ -20,6 +21,12 @@ class WebService
             res.send(message)
         }
 
-    @server.listen(2000)
+    try
+      @server.listen(WebService.port)
+    catch err
+      Application::log.error err
+      exit(1)
+    finally
+      Application::log.info "Control panel successful started on #{WebService.port} port"
 
 module.exports = WebService
