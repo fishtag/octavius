@@ -1,15 +1,11 @@
 Octavius project
 =======
-This is a simple web project that use Gulp for precompile all assets:
+This is a simple Node.js project that use Gulp for precompile all assets:
 
 - Jade
 - SCSS with [Autoprefixer](https://github.com/postcss/autoprefixer-core)
 - CoffeeScript
-- Optimize images
-- Generate sprites from images folder
-- Generate WebFont from folder of SVG files
 - Organize folder structure (copying fonts, sounds etc)
-- Deploy by ssh or ftp
 
 ## Main features
 
@@ -40,18 +36,15 @@ This is a simple web project that use Gulp for precompile all assets:
 *Note: strongly unrecommended to install NPM via Homebrew, because there may be problems with access permissions*
 
 `curl -L https://npmjs.com/install.sh | sh`
-### Clone Git project
-`git clone https://github.com/fishtag/Octavius.git`
 
 ### Install latest tested Node.js release
 `nvm install 0.12.7`
 
 *Note: later you can use this construction for choose correct node.js version*
-
 `nvm use 0.12.7`
 
 ### Install required NPM packages
-`npm install`
+`npm install --save-dev octavius`
 
 ### Install Ruby version manager
 `brew install rbenv ruby-build`
@@ -62,57 +55,35 @@ This is a simple web project that use Gulp for precompile all assets:
 ### Install required Ruby gems via bundler
 `gem install bundler && bundle`
 
-## Start gulp
-*Note: Use Webstorm 9 Gulp support or start process from your Terminal with this command:*
+### Create index.js file with this content
+```
+Octavius = require('octavius');
+Octavius.start()
+```
+ 
+## Work with Octavius
+### Start Octavius
+`node index.js`
 
-`gulp`
+### Extend and override Octavius tasks
+Octavius supports custom tasks. All you need is create `octavius` folder in your application and add `tasks` folder inside it. After that you can create your own tasks which extends core Octavius Task Class (or any existed Task).
+Here is example of simple sounds copy task:
 
-----
-# Additional information
-## Bower components installation
+```
+CopyTask = require "#{__base}/core/tasks/copy"
+
+class SoundsTask extends CopyTask
+  _paths:
+    destination: 'sounds'
+
+module.exports = SoundsTask
+```
+
+After restart Octavious your custom task will be added into Tasks stack.
+
+### Bower components installation
 All bower components automatically concatenates into one file libraries.js. Gulp get main file of each component by its 'main' attribute in bower.json. So if you want automatically attach new component to your project you shoud do it with this command:
 
 `bower install backbone --save`
 
-*Important! Gulp does not find your component without dependency in bower.json. Flag **--save** means that the information about the component will be included in the main bower.json file.*
-
-----
-
-# Deploy tasks
-## ssh
-You can deploy your public folder by ssh with this command:
-
-`gulp --deploy`
-
-All configuration options available in **/gulp/config.yml** file **deploy.rsync** section
-
-*Important! You must have **ssh public key** on your target server. You can read more about this [here](https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2).*
-
-## ftp
-You can deploy your public folder via ftp with this command:
-
-`gulp --deploy --ftp`
-
-All configuration options available in **/gulp/config.yml** file **deploy.ftp** section.
-
-----
-
-# Service tasks
-## block
-This task creates block in your app/slim and scss/includes folders and append include directives to index.slim and applications.scss files. To create new block run this command in your terminal:
-
-`gulp block --name=%your-block-name%`
-
-----
-
-# Changelog
-
-## v0.2
-- Fix v0.12.* node.js issues. Now you can use latest engine in your projects
-- Replace gulp-file-include package with build-in Slim include plugin
-- Replace v0.12.* node.js release conflict execSync package with shelljs
-
-# Upcoming features
-
-- Favicon generation for all devices
-- Production mode with uglify support
+*Important! Octavius does not find your component without dependency in bower.json. Flag **--save** means that the information about the component will be included in the main bower.json file.*
