@@ -1,6 +1,6 @@
 require './core/globals'
 
-global.Gulpify = class Gulpify
+global.Octavius = class Octavius
   log: require './core/log'
   develop: true
   watch: true
@@ -11,17 +11,17 @@ global.Gulpify = class Gulpify
     @_started = false
 
   start: ->
-    Gulpify::log.info 'trying to start..'
+    Octavius::log.info 'trying to start..'
     @_started = true
     @services.load () =>
       @webserver = new (require './core/web')(@services)
       @tasks.load().start()
-      Gulpify::log.info 'application is started!'
+      Octavius::log.info 'application is started!'
 
   stop: (callback) ->
-    Gulpify::log.info 'trying to stop..'
+    Octavius::log.info 'trying to stop..'
     @_started = false
-    Gulpify::log.info 'application is stopped'
+    Octavius::log.info 'application is stopped'
     callback()
 
   restart: ->
@@ -31,4 +31,4 @@ global.Gulpify = class Gulpify
     else
       @start()
 
-module.exports = new Gulpify()
+module.exports = new Octavius()

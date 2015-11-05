@@ -9,11 +9,11 @@ class WebService
     @server = Express()
 
     @server.get '/', (req, res) =>
-      res.send('Gulpify control panel');
+      res.send('Octavius control panel');
 
     @server.get '/:service/:method', (req, res) =>
       unless @services.get(req.params.service)
-        res.send('Requested Gulpify service not found');
+        res.send('Requested Octavius service not found');
       else
         Radio.emit "#{req.params.service}:#{req.params.method}", {
           callback: (message) ->

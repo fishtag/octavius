@@ -1,4 +1,13 @@
 {
+  "name": "Octavius",
+  "version": "1.0.0",
+  "description": "Gulp-based application for frontend development",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "YozZh",
+  "license": "ISC",
   "dependencies": {
     "async": "^1.4.2",
     "bower": "^1.6.3",

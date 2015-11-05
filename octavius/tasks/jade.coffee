@@ -19,15 +19,15 @@ class JadeTask extends Task
       .pipe Data (file, callback) =>
         filename = Path.basename(file.path, '.jade')
         @data filename, callback
-      .on("error", Gulpify::log.error)
+      .on("error", Octavius::log.error)
       .pipe Jade()
-        .on("error", Gulpify::log.error)
+        .on("error", Octavius::log.error)
       .pipe gulp.dest @paths().destination
 
   production: ->
     gulp.src @paths().source + '/*.jade'
       .pipe Jade()
-        .on("error", Gulpify::log.error)
+        .on("error", Octavius::log.error)
       .pipe Minify
         collapseWhitespace: true
       .pipe gulp.dest @paths().destination

@@ -21,7 +21,7 @@ class Task
 
   start: ->
     @run()
-    @watch() if @options.watch and Gulpify::watch
+    @watch() if @options.watch and Octavius::watch
 
   run: ->
     Sequence.apply @, @sequence
@@ -36,11 +36,11 @@ class Task
       @_production()
 
   _develop: ->
-    Gulpify::log.info "#{@filename} develop"
+    Octavius::log.info "#{@filename} develop"
     @develop()
 
   _production: ->
-    Gulpify::log.info "#{@filename} production"
+    Octavius::log.info "#{@filename} production"
     if @production
       @production()
     else

@@ -6,7 +6,7 @@ class BrowsersyncService extends Service
     'reload': 'reload'
 
   initialize: ->
-    @start() if Gulpify::develop
+    @start() if Octavius::develop
 
   start: ->
     @server = browserSync

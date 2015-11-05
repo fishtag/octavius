@@ -1,8 +1,8 @@
 colors = require('colors')
-class GulpifyLog
+class OctaviusLog
   constructor: ->
   info: (message) ->
-    console.log "Gulpify: #{message}".blue
+    console.log "Octavius: #{message}".blue
 
   error: (error) ->
     if error.filename
@@ -15,4 +15,4 @@ class GulpifyLog
     console.log error.toString().red
     @emit 'end'
 
-module.exports = new GulpifyLog()
+module.exports = new OctaviusLog()

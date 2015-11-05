@@ -16,7 +16,7 @@ class SassTask extends Task
     gulp.src [@paths().source + '**/*.sass', @paths().source + '**/*.css']
       .pipe Sourcemaps.init()
       .pipe Sass()
-        .on("error", Gulpify::log.error)
+        .on("error", Octavius::log.error)
       .pipe Sourcemaps.write()
       .pipe Sourcemaps.init loadMaps:true
       .pipe Autoprefixer
@@ -29,7 +29,7 @@ class SassTask extends Task
   production: ->
     gulp.src @paths().source + '**/*.sass'
       .pipe Sass()
-        .on("error", Gulpify::log.error)
+        .on("error", Octavius::log.error)
       .pipe Autoprefixer
         browsers: ['last 3 versions']
       .pipe CSSMin()

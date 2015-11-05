@@ -12,7 +12,7 @@ class Services
     tasks = []
     _.each services, (serviceClass, name) =>
       tasks.push (callback) =>
-        Gulpify::log.info "initialize #{serviceClass.name} service"
+        Octavius::log.info "initialize #{serviceClass.name} service"
         @services[name] = new serviceClass(callback)
     async.series tasks, (err, results) ->
       callback()

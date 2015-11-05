@@ -14,7 +14,7 @@ global.Config = YamlConfig.load "#{__base}/config.yml"
 global.requireTasks = (module, path) ->
   requireDirectory(module, path, {
     rename: (filename, joined, filename2) ->
-      path = joined.split('gulpify/tasks/')[1]
+      path = joined.split('octavius/tasks/')[1]
       .replace '/',':'
       .replace '.coffee',''
       path

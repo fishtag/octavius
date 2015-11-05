@@ -18,10 +18,10 @@ class MongoService extends Service
       collections: {}
 
   start: ->
-    Gulpify::log.info "connecting to remote MongoDB Server"
+    Octavius::log.info "connecting to remote MongoDB Server"
     MongoClient.connect Config.data.mongodb.uri, (err, db) =>
       @db = db
-      Gulpify::log.info "connection to MongoDB Server success"
+      Octavius::log.info "connection to MongoDB Server success"
       @callback(undefined, @)
 
   collections: (options) ->
@@ -37,11 +37,11 @@ class MongoService extends Service
   getCollection: (collection, callback) ->
     if @cache.collections[collection]
       return (callback) =>
-        Gulpify::log.info "MongoDB: receiving data from local cache"
+        Octavius::log.info "MongoDB: receiving data from local cache"
         callback(undefined, @cache.collections[collection])
     else
       return (callback) =>
-        Gulpify::log.info "MongoDB: receiving data from remote server"
+        Octavius::log.info "MongoDB: receiving data from remote server"
         result = {}
         @db.collection(collection).find().toArray (err, data) =>
           result[collection] = data

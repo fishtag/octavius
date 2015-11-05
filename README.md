@@ -1,8 +1,8 @@
-Gulpify project
+Octavius project
 =======
 This is a simple web project that use Gulp for precompile all assets:
 
-- Slim with include
+- Jade
 - SCSS with [Autoprefixer](https://github.com/postcss/autoprefixer-core)
 - CoffeeScript
 - Optimize images
@@ -41,7 +41,7 @@ This is a simple web project that use Gulp for precompile all assets:
 
 `curl -L https://npmjs.com/install.sh | sh`
 ### Clone Git project
-`git clone https://github.com/fishtag/gulpify.git`
+`git clone https://github.com/fishtag/Octavius.git`
 
 ### Install latest tested Node.js release
 `nvm install 0.12.7`
