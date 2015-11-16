@@ -3,7 +3,7 @@ ncp = require('ncp').ncp
 
 global.Application = class Octavius
   log: require './core/log'
-  develop: true
+  develop: global.__develop
   watch: true
 
   constructor: ->

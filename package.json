@@ -41,7 +41,7 @@
     "main-bower-files": "^2.9.0",
     "mongodb": "^2.0.47",
     "ncp": "^2.0.0",
-    "node-sass-import-once": "^1.2.0",
+    "node-sass-css-importer": "",
     "node-yaml-config": "0.0.3",
     "require-directory": "^2.1.1",
     "run-sequence": "^1.1.4",

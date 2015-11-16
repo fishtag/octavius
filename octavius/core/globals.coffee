@@ -8,6 +8,9 @@ global.fileExists = (file) ->
   finally
     return result
 
+global.__production = process.env.PRODUCTION||=false
+global.__develop = !__production
+
 global.__base = __dirname + '/..'
 global.__app = process.cwd() + '/app'
 global.__public = process.cwd() + '/public'

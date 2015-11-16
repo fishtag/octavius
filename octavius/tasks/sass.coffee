@@ -1,6 +1,8 @@
 Task = require "#{__base}/core/task"
 Sass = require 'gulp-sass'
-ImportOnce = require 'node-sass-import-once'
+CSSImporter = require('node-sass-css-importer')({
+  import_paths: ['bower_components', 'app/css']
+})
 Autoprefixer = require 'gulp-autoprefixer'
 CSSMin = require 'gulp-cssmin'
 Filter = require 'gulp-filter'
@@ -13,8 +15,9 @@ class SassTask extends Task
 
   develop: ->
     gulp.src [@paths().source + '**/*.sass', @paths().source + '**/*.css']
-      .pipe Sass()
-        .on("error", Application::log.error)
+      .pipe Sass
+        importer: [CSSImporter]
+      .on("error", Application::log.error)
       .pipe Autoprefixer
         browsers: ['last 3 versions']
       .pipe gulp.dest @paths().destination

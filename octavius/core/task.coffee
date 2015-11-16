@@ -8,7 +8,6 @@ class Task
 
   defaults:
     asset: true
-    develop: true
     livereload: false
 
   constructor: (filename, options = {}) ->
@@ -30,17 +29,16 @@ class Task
     Watch(@options.watch, () => @run())
 
   task: ->
-    if @options.develop
+    if Application::develop
       @_develop()
     else
       @_production()
 
   _develop: ->
-    Application::log.info "#{@filename} develop"
+    Application::log.info "#{@filename} started"
     @develop()
 
   _production: ->
-    Application::log.info "#{@filename} production"
     if @production
       @production()
     else
