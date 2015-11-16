@@ -49,6 +49,7 @@
     "vinyl-paths": "^2.1.0"
   },
   "devDependencies": {
-    "gulp-debug": "^2.1.2"
+    "gulp-debug": "^2.1.2",
+    "gulp-imagemin": "^2.4.0"
   }
 }
