@@ -4,7 +4,6 @@ vinylPaths = require 'vinyl-paths'
 svgmin = require 'gulp-svgmin'
 iconfont = require 'gulp-iconfont'
 consolidate = require 'gulp-consolidate'
-debug = require 'gulp-debug'
 
 class IconsTask extends Task
   _paths:
@@ -25,7 +24,6 @@ class IconsTask extends Task
         normalize: true
       }
       .on 'glyphs', (glyphs, options) =>
-        console.log glyphs
         gulp.src "#{__base}/templates/_icons.scss"
           .pipe consolidate 'lodash', { # Use special template for lodash
             glyphs: glyphs
