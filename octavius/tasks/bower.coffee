@@ -10,7 +10,7 @@ class BowerTask extends Task
     dependencies: ['bower:install', 'bower:clean', 'bower:files']
     asset: false
     livereload: {}
-    watch: global.__base+'/../bower.json'
+    watch: global.__bower
 
   develop: ->
     Sequence

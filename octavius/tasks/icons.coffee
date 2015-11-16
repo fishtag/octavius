@@ -14,8 +14,6 @@ class IconsTask extends Task
   fontName: 'icon'
 
   develop: ->
-    gulp.src @_paths.scss + '/_icons.scss' # Remove old scss
-      .pipe vinylPaths del
     gulp.src @paths().source + '**/*.svg'
       .pipe svgmin() # Optimize each SVG icon
       .pipe iconfont { # Generate icon font

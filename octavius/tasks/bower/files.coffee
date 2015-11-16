@@ -1,5 +1,5 @@
 Task = require "#{__base}/core/task"
-BowerFiles = require 'main-bower-files'
+MainBowerFiles = require 'main-bower-files'
 Concat = require 'gulp-concat'
 
 class BowerFilesTask extends Task
@@ -11,12 +11,13 @@ class BowerFilesTask extends Task
 
   develop: ->
     return unless fileExists(__bower)
-    gulp.src BowerFiles()
-      .pipe gulp.dest @paths().destination
 
+    gulp.src MainBowerFiles()
+      .on("error", Application::log.error)
+      .pipe gulp.dest @paths().destination
   production: ->
     return unless fileExists(__bower)
-    files = BowerFiles()
+    files = MainBowerFiles()
     gulp.src files
       .pipe Concat 'libraries.js'
       .pipe gulp.dest @paths().destination
