@@ -1,6 +1,6 @@
 {
   "name": "octavius",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Gulp-based application for frontend development",
   "main": "index.js",
   "scripts": {
