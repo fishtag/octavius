@@ -5,6 +5,8 @@ class OctaviusLog
     console.log "Octavius: #{message}".blue
 
   error: (error) ->
+    return unless error
+
     if error.filename
       filename = _.last error.filename.split('/')
       filenameMessage = "in ".red + filename.red.underline + ':'.red

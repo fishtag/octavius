@@ -1,4 +1,5 @@
 require './core/globals'
+ncp = require('ncp').ncp
 
 global.Application = class Octavius
   log: require './core/log'
@@ -6,9 +7,19 @@ global.Application = class Octavius
   watch: true
 
   constructor: ->
+    @_init()
     @tasks = new (require './core/tasks')()
     @services = new (require './core/services')()
     @_started = false
+
+  _init: ->
+    return if fileExists(__app)
+
+    Application::log.info 'Creating dummy application..'
+    ncp "#{__dirname}/init/app", process.cwd() + '/app', (err) ->
+      return Application::log.error(err) if err
+
+      Application::log.info 'Dummy application successful created!'
 
   start: ->
     Application::log.info 'trying to start..'
