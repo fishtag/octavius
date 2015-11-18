@@ -39,7 +39,7 @@ class JadeTask extends Task
     if result
       result filename, callback
     else
-      {}
+      callback undefined, {}
 
   _json: (filename, callback) ->
     callback undefined, require("#{global.__app}/data/#{filename}.json")
