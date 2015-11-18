@@ -12,6 +12,9 @@
     "type": "git",
     "url": "git://github.com/fishtag/octavius.git"
   },
+  "bin": {
+    "octavius": "./bin/octavius.js"
+  },
   "dependencies": {
     "async": "^1.4.2",
     "bower": "^1.6.3",
@@ -37,8 +40,10 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-svgmin": "^1.2.0",
     "gulp-watch": "^4.3.5",
+    "liftoff": "^2.2.0",
     "lodash": "^3.10.1",
     "main-bower-files": "^2.9.0",
+    "minimist": "^1.2.0",
     "mongodb": "^2.0.47",
     "ncp": "^2.0.0",
     "node-sass-css-importer": "",

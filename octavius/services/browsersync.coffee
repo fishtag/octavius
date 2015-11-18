@@ -27,8 +27,9 @@ class BrowsersyncService extends Service
             }
           else
             next()
-      ]
-    @callback(undefined, @)
+      ], () =>
+        @callback(undefined, @)
+
 
   reload: (options) ->
     @server.reload options.options
