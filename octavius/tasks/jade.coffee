@@ -32,11 +32,14 @@ class JadeTask extends Task
       .pipe gulp.dest @paths().destination
 
   data: (filename, callback) ->
-    result = {}
+    result = false
     _.each JadeTask::_sources, (source) =>
       path = "#{global.__app}/data/#{filename}.#{source}"
       result = @["_#{source}"] if fileExists(path)
-    result filename, callback
+    if result
+      result filename, callback
+    else
+      {}
 
   _json: (filename, callback) ->
     callback undefined, require("#{global.__app}/data/#{filename}.json")
