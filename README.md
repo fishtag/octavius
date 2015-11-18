@@ -42,17 +42,11 @@ This is a simple Node.js project that use Gulp for precompile all assets:
 `nvm use 0.12.7`
 
 ### Install required NPM packages
-`npm install --save-dev octavius`
-
-### Create index.js file with this content
-```
-Octavius = require('octavius');
-Octavius.start()
-```
+`npm install -g octavius`
  
 ## Work with Octavius
 ### Start Octavius
-`node index.js`
+`octavius`
 
 ### Extend and override Octavius tasks
 Octavius supports custom tasks. All you need is create `octavius` folder in your application and add `tasks` folder inside it. After that you can create your own tasks which extends core Octavius Task Class (or any existed Task).
