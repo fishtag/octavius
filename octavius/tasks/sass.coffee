@@ -14,6 +14,7 @@ class SassTask extends Task
   develop: ->
     gulp.src [@paths().source + '**/*.sass', @paths().source + '**/*.css']
       .pipe Sass()
+        .on("error", Application::log.error)
       .pipe CSSImport()
         .on("error", Application::log.error)
       .pipe Autoprefixer

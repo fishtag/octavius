@@ -8,6 +8,7 @@ global.Application = class Octavius
 
   constructor: ->
     @_init()
+    @_events()
     @tasks = new (require './core/tasks')()
     @services = new (require './core/services')()
     @_started = false
@@ -20,6 +21,12 @@ global.Application = class Octavius
       return Application::log.error(err) if err
 
       Application::log.info 'Dummy application successful created!'
+
+  _events: ->
+    process.on 'uncaughtException', (error) ->
+      switch error.code
+        when 'EEXIST'
+          Application::log.error(error)
 
   start: ->
     Application::log.info 'trying to start..'
