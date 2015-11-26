@@ -5,6 +5,8 @@ This is a simple Node.js project that use Gulp for precompile all assets:
 - Jade
 - SCSS with [Autoprefixer](https://github.com/postcss/autoprefixer-core)
 - CoffeeScript
+- Generated iconsfont 
+- Full Bower integration
 - Organize folder structure (copying fonts, sounds etc)
 
 ## Main features
@@ -27,19 +29,10 @@ This is a simple Node.js project that use Gulp for precompile all assets:
 ### Node.js
 `brew install node`
 
-### Node Version Manager
-`brew install nvm`
-
 ### Node Package Manager (NPM)
 *Note: strongly unrecommended to install NPM via Homebrew, because there may be problems with access permissions*
 
 `curl -L https://npmjs.com/install.sh | sh`
-
-### Install latest tested Node.js release
-`nvm install 0.12.7`
-
-*Note: later you can use this construction for choose correct node.js version*
-`nvm use 0.12.7`
 
 ### Install required NPM packages
 `npm install -g octavius`
