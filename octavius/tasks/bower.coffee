@@ -13,7 +13,7 @@ class BowerTask extends Task
     watch: global.__bower
 
   develop: ->
-    Sequence
+    Application::log.info 'Bower sequence is completed'
 
 module.exports = {
   task: BowerTask

@@ -22,12 +22,6 @@ global.Application = class Octavius
 
       Application::log.info 'Dummy application successful created!'
 
-  _events: ->
-    process.on 'uncaughtException', (error) ->
-      switch error.code
-        when 'EEXIST'
-          Application::log.error(error)
-
   start: ->
     Application::log.info 'trying to start..'
     @_started = true

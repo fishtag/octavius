@@ -19,7 +19,7 @@ class Task
     gulp.task @filename, () => @task()
 
   start: ->
-    @run()
+    @run() unless @_isSubtask() # Do not run at startup if it is dependency of another task
     @watch() if @options.watch and Application::watch
 
   run: ->
@@ -43,6 +43,9 @@ class Task
       @production()
     else
       @develop()
+
+  _isSubtask: ->
+    (not _.isNull @filename.match /(\:)/)
 
   _buildSequence: ->
     @sequence = [@filename]
