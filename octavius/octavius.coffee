@@ -8,7 +8,6 @@ global.Application = class Octavius
 
   constructor: ->
     @_init()
-    @_events()
     @tasks = new (require './core/tasks')()
     @services = new (require './core/services')()
     @_started = false
