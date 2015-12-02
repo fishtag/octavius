@@ -1,4 +1,5 @@
 Express = require 'express'
+Path = require 'path'
 
 class WebService
   @port: 2000
@@ -21,8 +22,7 @@ class WebService
     @listener.on 'error', @_errorHandler
 
   _initRoutes: ->
-    @server.get '/', (req, res) =>
-      res.send('Octavius control panel');
+    @server.use Express.static Path.join __public
 
     @server.get '/:service/:method', (req, res) =>
       unless @services.get(req.params.service)

@@ -12,7 +12,7 @@ class SassTask extends Task
     watch: global.__app+'/sass/**/*.sass'
 
   develop: ->
-    gulp.src [@paths().source + '**/*.sass', @paths().source + '**/*.css']
+    gulp.src [@paths().source + '/*.sass', @paths().source + '**/*.css']
       .pipe Sass()
         .on("error", Application::log.error)
       .pipe CSSImport()
@@ -24,7 +24,7 @@ class SassTask extends Task
       .pipe browserSync.reload stream:true
 
   production: ->
-    gulp.src @paths().source + '**/*.sass'
+    gulp.src @paths().source + '/*.sass'
       .pipe Sass()
         .on("error", Application::log.error)
       .pipe Autoprefixer
