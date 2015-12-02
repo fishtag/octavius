@@ -2,7 +2,7 @@ Express = require 'express'
 Path = require 'path'
 
 class WebService
-  @port: 2000
+  @port: __port
   constructor: (services) ->
     _.bindAll @, '_errorHandler'
 

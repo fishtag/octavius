@@ -11,6 +11,8 @@ global.fileExists = (file) ->
 global.__production = process.env.PRODUCTION||=false
 global.__develop = !__production
 
+global.__port = process.env.PORT||=8080
+
 global.__base = __dirname + '/..'
 global.__app = process.cwd() + '/app'
 global.__public = process.cwd() + '/public'
