@@ -16,6 +16,12 @@ process.once('exit', function(code) {
     }
 });
 
+if (argv.v || argv.version) {
+    var pjson = require('../package.json');
+    console.log(pjson.version);
+    process.exit(0);
+}
+
 process.nextTick(function() {
     Octavius = require('../octavius/octavius');
     Octavius.start();
