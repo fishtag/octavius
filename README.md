@@ -8,6 +8,8 @@ This is a simple Node.js project that use Gulp for precompile all assets:
 - Generated iconsfont 
 - Full Bower integration
 - Organize folder structure (copying fonts, sounds etc)
+- Production mode with minified assets
+- Express server for standalone static sites
 
 ## Main features
 
@@ -40,6 +42,8 @@ This is a simple Node.js project that use Gulp for precompile all assets:
 ## Work with Octavius
 ### Start Octavius
 `octavius`
+### Check Octavius version
+`octavius -v` or `octavius --version`
 
 ### Extend and override Octavius tasks
 Octavius supports custom tasks. All you need is create `octavius` folder in your application and add `tasks` folder inside it. After that you can create your own tasks which extends core Octavius Task Class (or any existed Task).
@@ -63,3 +67,38 @@ All bower components automatically concatenates into one file libraries.js. Gulp
 `bower install backbone --save`
 
 *Important! Octavius does not find your component without dependency in bower.json. Flag **--save** means that the information about the component will be included in the main bower.json file.*
+
+### Production mode
+You can run Octavius in **production mode** with this simple environment variable:
+
+```PRODUCTION=true```
+
+### Express server
+Octavius can run server on specified port with this environment variable:
+
+```PORT=8888```
+
+Now you can see your website without BrowserSync with this address:
+
+```http://localhost:8888/```
+
+It is very useful for Cloud Services, for example, [Heroku](http://heroku.com). Just add **package.json** with this content in your project's root directory:
+
+```
+{
+  "name": "Project Name",
+  "version": "1.0.0",
+  "description": "Project description",
+  "scripts": {
+    "start": "octavius"
+  },
+  "dependencies": {
+    "octavius": "^1.1.4"
+  },
+  "engines": {
+    "node": "5.0.0"
+  }
+}
+
+```
+and push your project to heroku master branch.
