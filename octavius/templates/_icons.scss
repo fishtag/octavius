@@ -11,14 +11,14 @@
 
 .<%= className %>,
 [class^="<%= className %>-"], [class*=" <%= className %>-"] {
-  &:before {
-    display: inline-block;
-    font-family: "<%= fontName %>";
-    font-style: normal;
-    font-weight: normal;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
+  display: inline-block;
+  font-family: "<%= fontName %>";
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .<%= className %>-lg {
