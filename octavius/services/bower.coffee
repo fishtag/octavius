@@ -12,12 +12,14 @@ class BowerService extends Service
   install: (callback) ->
     return unless fileExists(__bower)
     Bower.commands.install()
+      .on 'end', (result) ->
+        callback result
 
   prune: (callback) ->
     return unless fileExists(__bower)
     Bower.commands
       .prune()
-      .on 'end', () ->
-        callback()
+      .on 'end', (result) ->
+        callback result
 
 module.exports = BowerService

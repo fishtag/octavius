@@ -25,6 +25,9 @@ class JadeTask extends Task
 
   production: ->
     gulp.src @paths().source + '/*.jade'
+      .pipe Data (file, callback) =>
+        filename = Path.basename(file.path, '.jade')
+        @data filename, callback
       .pipe Jade()
         .on("error", Application::log.error)
       .pipe Minify
@@ -32,6 +35,10 @@ class JadeTask extends Task
       .pipe gulp.dest @paths().destination
 
   data: (filename, callback) ->
+    octaviusData = {
+      octavius:
+        production: not Application::develop
+    }
     result = false
     _.each JadeTask::_sources, (source) =>
       path = "#{global.__app}/data/#{filename}.#{source}"
@@ -39,10 +46,15 @@ class JadeTask extends Task
     if result
       result filename, callback
     else
-      callback undefined, {}
+      callback undefined, octaviusData
 
   _json: (filename, callback) ->
-    callback undefined, require("#{global.__app}/data/#{filename}.json")
+    octaviusData = {
+      octavius:
+        production: not Application::develop
+    }
+    result = _.extend octaviusData, require("#{global.__app}/data/#{filename}.json")
+    callback undefined, result
 
   _mongodb: (filename, callback) ->
     dataStructure = JSON.parse(fs.readFileSync("#{global.__app}/data/#{filename}.mongodb", 'utf8'))

@@ -6,7 +6,10 @@ class BrowsersyncService extends Service
     'reload': 'reload'
 
   initialize: ->
-    @start() if Application::develop
+    if Application::develop
+      @start()
+    else
+      @callback(undefined, @)
 
   start: ->
     @server = browserSync

@@ -1,6 +1,7 @@
 Task = require "#{__base}/core/task"
 Coffee = require 'gulp-coffee'
 Sourcemaps = require 'gulp-sourcemaps'
+Uglify = require 'gulp-uglify'
 
 class CoffeeTask extends Task
   _paths:
@@ -21,6 +22,7 @@ class CoffeeTask extends Task
     gulp.src @paths().source + '**/*.coffee'
       .pipe Coffee()
         .on("error", Application::log.error)
+      .pipe Uglify()
       .pipe gulp.dest @paths().destination
 
 module.exports = CoffeeTask

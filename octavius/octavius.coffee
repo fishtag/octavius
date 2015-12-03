@@ -22,7 +22,7 @@ global.Application = class Octavius
       Application::log.info 'Dummy application successful created!'
 
   start: ->
-    Application::log.info 'trying to start..'
+    Application::log.info "Start application in #{ if Application::develop then 'develop' else 'production' } mode"
     @_started = true
     @services.load () =>
       @webserver = new (require './core/web')(@services)

@@ -27,6 +27,8 @@ class SassTask extends Task
     gulp.src @paths().source + '/*.sass'
       .pipe Sass()
         .on("error", Application::log.error)
+      .pipe CSSImport()
+        .on("error", Application::log.error)
       .pipe Autoprefixer
         browsers: ['last 3 versions']
       .pipe CSSMin()

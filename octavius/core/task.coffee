@@ -29,13 +29,13 @@ class Task
     Watch(@options.watch, () => @run())
 
   task: ->
+    Application::log.info "#{@filename} started"
     if Application::develop
       @_develop()
     else
       @_production()
 
   _develop: ->
-    Application::log.info "#{@filename} started"
     @develop()
 
   _production: ->
@@ -49,7 +49,7 @@ class Task
 
   _buildSequence: ->
     @sequence = [@filename]
-    if @options.livereload
+    if @options.livereload and Application::develop
       @sequence.push (arg) =>
         Radio.emit('browsersync:reload', {options: @options.livereload})
     if @options.dependencies

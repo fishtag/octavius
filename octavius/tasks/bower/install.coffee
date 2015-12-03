@@ -1,6 +1,7 @@
 Task = require "#{__base}/core/task"
 Jade = require 'gulp-jade'
 Minify = require 'gulp-htmlmin'
+through = require 'through2'
 
 class BowerInstallTask extends Task
   _paths:
@@ -10,7 +11,11 @@ class BowerInstallTask extends Task
     livereload: false
 
   develop: ->
-    Radio.emit 'bower:prune', () ->
-      Radio.emit 'bower:install'
+    gulp.src(__bower)
+      .pipe through.obj (file, enc, cb) ->
+        Radio.emit 'bower:prune', () ->
+          Radio.emit 'bower:install', (result) ->
+            Application::log.info 'Bower files successful installed'
+            cb null, file
 
 module.exports = BowerInstallTask

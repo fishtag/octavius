@@ -11,7 +11,7 @@ global.fileExists = (file) ->
 global.__production = process.env.PRODUCTION||=false
 global.__develop = !__production
 
-global.__port = process.env.PORT||=8080
+global.__port = if process.env.PORT then parseInt(process.env.PORT) else 8080
 
 global.__base = __dirname + '/..'
 global.__app = process.cwd() + '/app'
