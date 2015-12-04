@@ -26,8 +26,9 @@ global.Application = class Octavius
     @_started = true
     @services.load () =>
       @webserver = new (require './core/web')(@services)
-      @tasks.load().start()
-      Application::log.info 'application is started!'
+      @services.services.bower.install () =>
+        @tasks.load().start()
+        Application::log.info 'application is started!'
 
   stop: (callback) ->
     Application::log.info 'trying to stop..'
