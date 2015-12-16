@@ -20,7 +20,7 @@ class BrowsersyncService extends Service
         baseDir: './public'
       middleware: [
         (req, res, next) =>
-          unless _.isNull(req.url.match(/api/)) and !Config.data.mongodb
+          if !_.isNull(req.url.match(/api/)) and Config.data and Config.data.mongodb
             collection = _.last(req.url.split('/'))
             Radio.emit 'mongo:collections', {
               collections: {collection:collection}
