@@ -25,7 +25,8 @@ class global.Tasks
     @tasks = {}
 
   load: (path = "#{__base}/tasks") ->
-    _.each require(path), (taskFile, name) =>
+    tasks = require(path)
+    _.each tasks, (taskFile, name) =>
       unless taskFile.subtasks
         @tasks[name] = new taskFile(name)
       else

@@ -17,5 +17,7 @@ class BowerTask extends Task
 
 module.exports = {
   task: BowerTask
-  subtasks: Tasks.require(module, "#{__base}/tasks/bower")
+  subtasks: requireDirectory module, "#{__base}/tasks/bower", {
+    rename: Tasks.rename
+  }
 }

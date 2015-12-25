@@ -21,14 +21,17 @@ global.Application = class Octavius
 
       Application::log.info 'Dummy application successful created!'
 
-  start: ->
+  start: (options = {}) ->
     Application::log.info "Start application in #{ if Application::develop then 'develop' else 'production' } mode"
     @_started = true
     @services.load () =>
-      @webserver = new (require './core/web')(@services)
-      @services.services.bower.install () =>
-        @tasks.load().start()
-        Application::log.info 'application is started!'
+      if options.server
+        @webserver = new (require './core/web')(@services)
+
+      unless options.serverOnly
+        @services.services.bower.install () =>
+          @tasks.load().start()
+          Application::log.info 'application is started!'
 
   stop: (callback) ->
     Application::log.info 'trying to stop..'

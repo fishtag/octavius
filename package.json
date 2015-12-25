@@ -1,6 +1,6 @@
 {
   "name": "octavius",
-  "version": "1.1.8",
+  "version": "1.2",
   "description": "Gulp-based application for frontend development",
   "keywords": [
     "gulp",
@@ -28,6 +28,7 @@
     "browser-sync": "^2.9.8",
     "coffee-script": "^1.10.0",
     "colors": "^1.1.2",
+    "commander": "^2.9.0",
     "del": "^2.0.2",
     "express": "^4.13.3",
     "gulp": "^3.9.0",
