@@ -23,6 +23,7 @@ class Task
     @watch() if @options.watch and Application::watch
 
   run: ->
+    console.log @sequence
     Sequence.apply @, @sequence
 
   watch: ->
@@ -53,7 +54,8 @@ class Task
       @sequence.push (arg) =>
         Radio.emit('browsersync:reload', {options: @options.livereload})
     if @options.dependencies
-      @sequence = _.union @options.dependencies, @sequence
+      @sequence = _.union @options.dependencies, @sequence, (event) =>
+        console.log 'end'
 
   paths: () ->
     source = if @constructor::_paths.source then @constructor::_paths.source else @filename

@@ -1,5 +1,5 @@
 Service = require "#{__base}/core/service"
-Bower = require 'bower'
+Bower = if fileExists(__bower) then require('bower') else false
 
 class BowerService extends Service
   events:
@@ -10,13 +10,13 @@ class BowerService extends Service
     @start()
 
   install: (callback) ->
-    callback() unless fileExists(__bower)
+    return callback() unless fileExists(__bower)
     Bower.commands.install()
       .on 'end', (result) ->
         callback result
 
   prune: (callback) ->
-    callback() unless fileExists(__bower)
+    return callback() unless fileExists(__bower)
     Bower.commands
       .prune()
       .on 'end', (result) ->

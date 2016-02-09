@@ -24,6 +24,7 @@ global.requireDirectory = require 'require-directory'
 global.browserSync = require 'browser-sync'
 global.Radio = new (require 'events').EventEmitter()
 global.gulp = require 'gulp'
+global.util = require 'gulp-util'
 
 YamlConfig = require 'node-yaml-config'
 global.Config = YamlConfig.load "#{__base}/config.yml"

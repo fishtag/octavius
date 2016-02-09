@@ -11,6 +11,8 @@ class BowerInstallTask extends Task
     livereload: false
 
   develop: ->
+    return util.noop() unless fileExists(__bower)
+
     gulp.src(__bower)
       .pipe through.obj (file, enc, cb) ->
         Radio.emit 'bower:prune', () ->

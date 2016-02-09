@@ -1,4 +1,5 @@
 requireDirectory = require 'require-directory'
+
 class Services
   options:
     services: "#{__base}/services"
