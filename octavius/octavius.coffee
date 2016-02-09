@@ -24,6 +24,8 @@ global.Application = class Octavius
   start: (options = {}) ->
     Application::log.info "Start application in #{ if Application::develop then 'develop' else 'production' } mode"
     @_started = true
+    if options.once
+      Application::watch = false
     @services.load () =>
       if options.server or options.serverOnly
         @webserver = new (require './core/web')(@services)

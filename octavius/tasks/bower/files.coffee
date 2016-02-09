@@ -23,7 +23,6 @@ class BowerFilesTask extends Task
     return unless fileExists(__bower)
 
     files = MainBowerFiles()
-    console.log 'here'
 
     gulp.src files
       .pipe Filter '*.js'

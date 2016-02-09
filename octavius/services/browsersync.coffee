@@ -6,7 +6,7 @@ class BrowsersyncService extends Service
 
   initialize: ->
     @reloadTimer = null
-    if Application::develop
+    if Application::watch
       @start()
     else
       @callback(undefined, @)
@@ -35,6 +35,7 @@ class BrowsersyncService extends Service
 
 
   reload: (options) ->
+    return unless @server
     clearTimeout @reloadTimer
     @reloadTimer = setTimeout () =>
       @server.reload options.options

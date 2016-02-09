@@ -20,7 +20,8 @@ class Task
 
   start: ->
     @run() unless @_isSubtask() # Do not run at startup if it is dependency of another task
-    @watch() if @options.watch and Application::watch
+    if @options.watch and Application::watch
+      @watch()
 
   run: ->
     Sequence.apply @, @sequence
@@ -49,18 +50,11 @@ class Task
 
   _buildSequence: ->
     @sequence = [@filename]
-    if Application::develop
-      if @options.livereload
-        @sequence.push (arg) =>
-          Radio.emit('browsersync:reload', {options: @options.livereload})
-          @_finished()
-      else
-        @sequence.push (arg) => @_finished()
+    if @options.livereload and Application::develop
+      @sequence.push (arg) =>
+        Radio.emit('browsersync:reload', {options: @options.livereload})
     if @options.dependencies
       @sequence = _.union @options.dependencies, @sequence
-
-  _finished: ->
-    Application::log.info "#{@filename} finished"
 
   paths: () ->
     source = if @constructor::_paths.source then @constructor::_paths.source else @filename

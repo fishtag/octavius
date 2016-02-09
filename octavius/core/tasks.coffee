@@ -46,9 +46,7 @@ class global.Tasks
       _.each @tasks, (task, name) =>
         sequence = _.union sequence, task.sequence
 
-      console.log sequence
       Sequence.apply @, sequence, () =>
-        console.log 'tasks callback'
         callback() if callback
 
 module.exports = Tasks
