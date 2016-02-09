@@ -6,6 +6,7 @@ class BrowsersyncService extends Service
     'reload': 'reload'
 
   initialize: ->
+    @reloadTimer = null
     if Application::develop
       @start()
     else
@@ -35,8 +36,11 @@ class BrowsersyncService extends Service
 
 
   reload: (options) ->
-    @server.reload options.options
-    options.callback('All browsers successfull reloaded') if options.callback
+    clearTimeout @reloadTimer
+    @reloadTimer = setTimeout () =>
+      @server.reload options.options
+      options.callback('All browsers successfull reloaded') if options.callback
+    , 500
 
 
 module.exports = BrowsersyncService
