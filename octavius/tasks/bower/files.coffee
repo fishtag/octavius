@@ -12,7 +12,7 @@ class BowerFilesTask extends Task
     livereload: false
 
   develop: ->
-    return util.noop() unless fileExists(__bower)
+    return unless fileExists(__bower)
 
     gulp.src MainBowerFiles()
       .pipe Filter '*.js'
@@ -20,15 +20,18 @@ class BowerFilesTask extends Task
       .pipe gulp.dest @paths().destination
 
   production: ->
-    return util.noop() unless fileExists(__bower)
+    return unless fileExists(__bower)
 
     files = MainBowerFiles()
+    console.log 'here'
 
     gulp.src files
       .pipe Filter '*.js'
+        .on("error", Application::log.error)
       .pipe Uglify()
         .on("error", Application::log.error)
       .pipe Concat 'libraries.js'
+        .on("error", Application::log.error)
       .pipe gulp.dest "#{__public}/assets/js/"
 
 module.exports = BowerFilesTask

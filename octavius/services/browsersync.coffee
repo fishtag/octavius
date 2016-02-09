@@ -1,6 +1,5 @@
 Service = require "#{__base}/core/service"
 
-
 class BrowsersyncService extends Service
   events:
     'reload': 'reload'

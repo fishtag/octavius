@@ -49,12 +49,13 @@ class Task
 
   _buildSequence: ->
     @sequence = [@filename]
-    if @options.livereload and Application::develop
-      @sequence.push (arg) =>
-        Radio.emit('browsersync:reload', {options: @options.livereload})
-        @_finished()
-    else
-      @sequence.push (arg) => @_finished()
+    if Application::develop
+      if @options.livereload
+        @sequence.push (arg) =>
+          Radio.emit('browsersync:reload', {options: @options.livereload})
+          @_finished()
+      else
+        @sequence.push (arg) => @_finished()
     if @options.dependencies
       @sequence = _.union @options.dependencies, @sequence
 

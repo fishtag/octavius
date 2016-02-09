@@ -1,3 +1,5 @@
+Sequence = require 'run-sequence'
+
 class global.Tasks
   @override: process.cwd()+'/octavius/tasks'
   @rename: (filename, joined, filename2) ->
@@ -35,8 +37,18 @@ class global.Tasks
         @tasks[name] = new (taskFile.task)(name)
     @
 
-  start: ->
-    _.each @tasks, (task, name) =>
-      task.start()
+  start: (callback = false) ->
+    if Application::develop
+      _.each @tasks, (task, name) =>
+        task.start()
+    else
+      sequence = []
+      _.each @tasks, (task, name) =>
+        sequence = _.union sequence, task.sequence
+
+      console.log sequence
+      Sequence.apply @, sequence, () =>
+        console.log 'tasks callback'
+        callback() if callback
 
 module.exports = Tasks
