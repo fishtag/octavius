@@ -36,6 +36,20 @@ class Task
     else
       @_production()
 
+  _config: (production = false) ->
+    return {} unless Config[@filename]
+    baseConfig = Config[@filename]
+    config = {}
+
+    if baseConfig['develop'] or baseConfig['production']
+      config['develop'] = baseConfig['develop'] || {}
+      config['production'] = baseConfig['production'] || config['develop']
+    else
+      config['develop'] = config['production'] = baseConfig
+
+    if production then config['production'] else config['develop']
+
+
   _develop: ->
     @develop()
 

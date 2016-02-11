@@ -19,7 +19,7 @@ class JadeTask extends Task
         filename = Path.basename(file.path, '.jade')
         @data filename, callback
       .on("error", Application::log.error)
-      .pipe Jade()
+      .pipe Jade(@_config())
         .on("error", Application::log.error)
       .pipe gulp.dest @paths().destination
 
@@ -28,7 +28,7 @@ class JadeTask extends Task
       .pipe Data (file, callback) =>
         filename = Path.basename(file.path, '.jade')
         @data filename, callback
-      .pipe Jade()
+      .pipe Jade(@_config(true))
         .on("error", Application::log.error)
       .pipe Minify
         collapseWhitespace: true
